@@ -1,5 +1,5 @@
 package com.cars.services;
 
-public class CarService {
+public interface CarService {
 
 }
