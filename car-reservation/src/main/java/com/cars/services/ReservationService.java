@@ -1,5 +1,20 @@
 package com.cars.services;
 
-public class ReservationService {
+import java.util.List;
 
+import com.cars.models.Reservation;
+
+public interface ReservationService {
+
+	// Save operation
+	Reservation saveReservation(Reservation reservation);
+	
+	// Read operation
+	List<Reservation> fetchReservationList();
+	
+	// Update operation
+	Reservation updateReservation(Reservation reservation, long reservationId);
+	
+	// Delete operation
+	void deleteReservationById(long reservationId);
 }
