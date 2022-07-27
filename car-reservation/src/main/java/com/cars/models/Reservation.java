@@ -20,7 +20,7 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "reservation_id")
-	private int id;
+	private Long id;
 	
 	@NotNull
 	@OneToOne
@@ -52,7 +52,7 @@ public class Reservation {
 		this.end = end;
 	}
 
-	public Reservation(int id, Car car, Customer customer, @NotBlank String start, @NotBlank String end) {
+	public Reservation(Long id, Car car, Customer customer, @NotBlank String start, @NotBlank String end) {
 		super();
 		this.id = id;
 		this.car = car;
@@ -61,11 +61,11 @@ public class Reservation {
 		this.end = end;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
