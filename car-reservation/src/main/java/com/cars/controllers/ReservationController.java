@@ -18,7 +18,7 @@ import com.cars.models.Reservation;
 import com.cars.services.ReservationService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class ReservationController {
 	
 	@Autowired 
@@ -49,7 +49,7 @@ public class ReservationController {
  
     public Reservation
     updateReservation(@RequestBody Reservation reservation,
-                     @PathVariable("id") Long reservationId)
+                     @PathVariable("id") int reservationId)
     {
         return reservationService.updateReservation(
             reservation, reservationId);
@@ -59,7 +59,7 @@ public class ReservationController {
     @DeleteMapping("/reservation/{id}")
  
     public String deleteReservationById(@PathVariable("id")
-                                       Long reservationId)
+                                       int reservationId)
     {
     	reservationService.deleteReservationById(reservationId);
         return "Deleted Successfully";
