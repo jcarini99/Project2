@@ -23,7 +23,7 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "car_id")
 	@OneToOne(mappedBy = "cars") 
-	private int id;
+	private long id;
 	
 	@NotBlank
 	@Column // defaults to using the Java variable name
@@ -47,7 +47,7 @@ public class Car {
 	}
 		
 
-	public Car(int id, @NotBlank String make, @NotBlank String model, @NotBlank int year, @NotBlank int tier) {
+	public Car(long id, @NotBlank String make, @NotBlank String model, @NotBlank int year, @NotBlank int tier) {
 		super();
 		this.id = id;
 		this.make = make;
@@ -57,13 +57,13 @@ public class Car {
 	}
 
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
