@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -25,13 +26,13 @@ public class Reservation {
 	private int id;
 	
 	@NotNull
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "car_id")
 	@JsonIdentityReference(alwaysAsId = true)
 	private Car car;
 	
 	@NotNull
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	@JsonIdentityReference(alwaysAsId = true)
 	private Customer customer;
