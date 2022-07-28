@@ -7,6 +7,6 @@ import com.cars.models.Car;
 import com.cars.models.Reservation;
 
 @Repository
-public interface CarRepository extends CrudRepository<Car, Long> {
+public interface CarRepository extends CrudRepository<Car, Integer> {
 
 }

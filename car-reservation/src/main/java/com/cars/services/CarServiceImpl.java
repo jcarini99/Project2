@@ -1,6 +1,7 @@
 package com.cars.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,20 @@ public class CarServiceImpl implements CarService {
 	@Autowired
 	private CarRepository carRepository;
 
+
+	@Override
+	public List<Car> fetchCarList() {
+
+		return (List<Car>) carRepository.findAll();
+	}
+	
+	@Override
+	public Car fetchCarById(int carId) {
+		// TODO Auto-generated method stub
+		Optional<Car> car = carRepository.findById(carId);
+		return car.isPresent() ? car.get() : null;
+	}
+	
 	@Override
 	public Car saveCar(Car car) {
 
@@ -25,13 +40,7 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public List<Car> fetchCarList() {
-
-		return (List<Car>) carRepository.findAll();
-	}
-
-	@Override
-	public Car updateCar(Car car, long carId) {
+	public Car updateCar(Car car, int carId) {
 		
         Car carDB
         = carRepository.findById(carId).get();
@@ -52,10 +61,12 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public void deleteCarById(long carId) {
+	public void deleteCarById(int carId) {
 		
 		carRepository.deleteById(carId);
 		
 	}
+
+	
 
 }

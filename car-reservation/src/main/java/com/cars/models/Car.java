@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -22,8 +23,8 @@ public class Car {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "car_id")
-	@OneToOne(mappedBy = "cars") 
-	private long id;
+	@OneToMany(mappedBy = "cars") 
+	private int id;
 	
 	@NotBlank
 	@Column // defaults to using the Java variable name
@@ -47,7 +48,7 @@ public class Car {
 	}
 		
 
-	public Car(long id, @NotBlank String make, @NotBlank String model, @NotBlank int year, @NotBlank int tier) {
+	public Car(int id, @NotBlank String make, @NotBlank String model, @NotBlank int year, @NotBlank int tier) {
 		super();
 		this.id = id;
 		this.make = make;
@@ -63,7 +64,7 @@ public class Car {
 
 
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
