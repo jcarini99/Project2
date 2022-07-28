@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 @Entity
 @Table(name = "reservations")
 public class Reservation {
@@ -25,11 +27,13 @@ public class Reservation {
 	@NotNull
 	@OneToOne
 	@JoinColumn(name = "car_id")
+	@JsonIdentityReference(alwaysAsId = true)
 	private Car car;
 	
 	@NotNull
 	@OneToOne
 	@JoinColumn(name = "customer_id")
+	@JsonIdentityReference(alwaysAsId = true)
 	private Customer customer;
 	
 	@NotBlank
