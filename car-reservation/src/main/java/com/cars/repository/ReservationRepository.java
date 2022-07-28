@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.cars.models.Reservation;
 
 @Repository
-public interface ReservationRepository extends CrudRepository<Reservation, Long> {
+public interface ReservationRepository extends CrudRepository<Reservation, Integer> {
 
 }

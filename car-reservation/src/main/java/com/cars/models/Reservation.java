@@ -8,10 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 
 @Entity
 @Table(name = "reservations")
@@ -20,16 +23,18 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "reservation_id")
-	private long id;
+	private int id;
 	
 	@NotNull
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "car_id")
+	@JsonIdentityReference(alwaysAsId = true)
 	private Car car;
 	
 	@NotNull
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "customer_id")
+	@JsonIdentityReference(alwaysAsId = true)
 	private Customer customer;
 	
 	@NotBlank
@@ -52,7 +57,7 @@ public class Reservation {
 		this.end = end;
 	}
 
-	public Reservation(long id, Car car, Customer customer, @NotBlank String start, @NotBlank String end) {
+	public Reservation(int id, Car car, Customer customer, @NotBlank String start, @NotBlank String end) {
 		super();
 		this.id = id;
 		this.car = car;
@@ -61,11 +66,11 @@ public class Reservation {
 		this.end = end;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

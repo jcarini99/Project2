@@ -30,7 +30,7 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public Reservation updateReservation(Reservation reservation, long reservationId) {
+	public Reservation updateReservation(Reservation reservation, int reservationId) {
 		
         Reservation resDB
         = reservationRepository.findById(reservationId).get();
@@ -51,7 +51,7 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public void deleteReservationById(long reservationId) {
+	public void deleteReservationById(int reservationId) {
 		
 		reservationRepository.deleteById(reservationId);
 		
