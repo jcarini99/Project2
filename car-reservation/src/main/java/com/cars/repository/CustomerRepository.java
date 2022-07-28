@@ -1,4 +1,4 @@
-package com.cars.repositories;
+package com.cars.repository;
 
 import java.util.List;
 

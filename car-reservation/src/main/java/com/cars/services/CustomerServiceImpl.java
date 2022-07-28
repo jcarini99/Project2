@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cars.models.Customer;
 import com.cars.models.Reservation;
-import com.cars.repositories.CustomerRepository;
+import com.cars.repository.CustomerRepository;
 
 @Service
 @Primary
