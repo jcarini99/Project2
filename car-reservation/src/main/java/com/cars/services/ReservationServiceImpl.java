@@ -5,11 +5,13 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cars.models.Reservation;
 import com.cars.repository.ReservationRepository;
 
 @Service
+@Transactional
 public class ReservationServiceImpl implements ReservationService{
 	
 	@Autowired

@@ -14,13 +14,13 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "reservation")
+@Table(name = "reservations")
 public class Reservation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "reservation_id")
-	private Long id;
+	private long id;
 	
 	@NotNull
 	@OneToOne
@@ -52,7 +52,7 @@ public class Reservation {
 		this.end = end;
 	}
 
-	public Reservation(Long id, Car car, Customer customer, @NotBlank String start, @NotBlank String end) {
+	public Reservation(long id, Car car, Customer customer, @NotBlank String start, @NotBlank String end) {
 		super();
 		this.id = id;
 		this.car = car;
@@ -61,11 +61,11 @@ public class Reservation {
 		this.end = end;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
