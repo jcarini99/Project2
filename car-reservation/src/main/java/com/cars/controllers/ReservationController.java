@@ -19,23 +19,30 @@ import com.cars.services.ReservationService;
 
 @RestController
 @CrossOrigin(origins = "*")
+<<<<<<< Updated upstream
+=======
+@RequestMapping("/reservations")
+>>>>>>> Stashed changes
 public class ReservationController {
 	
 	@Autowired 
 	private ReservationService reservationService;
 	
 	
-    // Read operation
-    @GetMapping("/reservation")
- 
+    // Read operations
+    @GetMapping 
     public List<Reservation> fetchReservationList()
     {
         return reservationService.fetchReservationList();
     }
 	
+    @GetMapping("/{id}")
+    public Reservation fetchReservationById(@PathVariable int id) {
+    	return reservationService.fetchReservationById(id);
+    }
+    
     // Save operation
-    @PostMapping("/reservation")
- 
+    @PostMapping 
     public Reservation saveReservation(
         @Valid @RequestBody Reservation reservation)
     {
@@ -45,8 +52,7 @@ public class ReservationController {
 
  
     // Update operation
-    @PutMapping("/reservation/{id}")
- 
+    @PutMapping("/{id}") 
     public Reservation
     updateReservation(@RequestBody Reservation reservation,
                      @PathVariable("id") int reservationId)
@@ -56,8 +62,7 @@ public class ReservationController {
     }
  
     // Delete operation
-    @DeleteMapping("/reservation/{id}")
- 
+    @DeleteMapping("/{id}") 
     public String deleteReservationById(@PathVariable("id")
                                        int reservationId)
     {

@@ -58,7 +58,7 @@ public class Car {
 	}
 
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 

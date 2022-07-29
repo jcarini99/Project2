@@ -9,8 +9,9 @@ public interface ReservationService {
 	// Save operation
 	Reservation saveReservation(Reservation reservation);
 	
-	// Read operation
+	// Read operations
 	List<Reservation> fetchReservationList();
+	Reservation fetchReservationById(int id);
 	
 	// Update operation
 	Reservation updateReservation(Reservation reservation, int reservationId);

@@ -1,7 +1,7 @@
 package com.cars.services;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +30,12 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
+	public Reservation fetchReservationById(int id) {
+		Optional<Reservation> reservation = reservationRepository.findById(id);
+		return reservation.isPresent() ? reservation.get() : null;
+	}
+
+	@Override
 	public Reservation updateReservation(Reservation reservation, int reservationId) {
 		
         Reservation resDB
@@ -45,9 +51,7 @@ public class ReservationServiceImpl implements ReservationService{
         	
         }
 
-
-
-    return reservationRepository.save(resDB);
+        return reservationRepository.save(resDB);
 	}
 
 	@Override
