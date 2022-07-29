@@ -23,7 +23,7 @@ public class Car {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "car_id")
-	@OneToMany(mappedBy = "cars") 
+//	@OneToMany(mappedBy = "cars") 
 	private int id;
 	
 	@NotBlank
