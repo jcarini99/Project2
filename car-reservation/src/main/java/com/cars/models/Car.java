@@ -1,6 +1,7 @@
 package com.cars.models;
 
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,13 +35,16 @@ public class Car {
 	@Column
 	private String model;
 
-	@NotBlank
+	@NotNull
 	@Column
 	private int year;
 	
-	@NotBlank
+	@NotNull
 	@Column
 	private int tier;
+	
+	@OneToMany(mappedBy = "car")
+	private Set<Reservation> reservation;
 	
 	
 	public Car() {
