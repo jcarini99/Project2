@@ -39,26 +39,6 @@ public class CarServiceImpl implements CarService {
 		return carRepository.save(car);
 	}
 
-<<<<<<< HEAD
-	@Override
-	public Car updateCar(Car car, int carId) {
-		
-        Car carDB
-        = carRepository.findById(carId).get();
-        
-        if (car == carDB) {
-        	
-        	carDB.setMake(car.getMake());
-        	carDB.setModel(car.getModel());
-        	carDB.setYear(car.getYear());
-        	carDB.setTier(car.getTier());
-        	
-        	
-        }
-
-    return carRepository.save(carDB);
-	}
-=======
 //	Exactly the same as saveCar()
 //	@Override
 //	public Car updateCar(Car car, int carId) {
@@ -77,7 +57,7 @@ public class CarServiceImpl implements CarService {
 //        }
 //    return carRepository.save(carDB);
 //	}
->>>>>>> e7c910789e0b30ebb677d3e06585e47a1378a862
+
 
 	@Override
 	public void deleteCarById(int carId) {

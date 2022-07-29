@@ -52,11 +52,7 @@ public class CarController {
 
 	// update
 	@PutMapping("/{id}")
-<<<<<<< HEAD
-	public Car updateCar(@Valid @RequestBody Car car, @PathVariable int id) {
-=======
 	public Car update(@Valid @RequestBody Car car, @PathVariable int id) {
->>>>>>> e7c910789e0b30ebb677d3e06585e47a1378a862
 		car.setId(id);
 		return carService.saveCar(car); // 
 	}
