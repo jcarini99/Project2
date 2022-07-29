@@ -1,1 +1,61 @@
-<p>home-content works!</p>
+<div class="home">
+    <div class="content-container">
+        <section class="form-section">
+            <div class="reservation-form-container">
+                <div class="reservation-header">
+                    <h1>Hertz Rental Car. Let’s Go!</h1>
+                </div>
+                <div class="reservation-form">
+                    <div class="manage-row">
+                        
+                    </div>
+                    <div class="content-row">
+                        <div class="form-field location">
+                            <mat-form-field appearance="fill">
+                            <mat-label>Clearable input</mat-label>
+                            <input matInput type="text" [(ngModel)]="value">
+                            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                              <mat-icon class="clear-button">close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        </div>
+                        <div class="form-field datetime pickup">
+                            <div class=" pickupDate">
+                                <mat-form-field appearance="fill">
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-hint>MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="form-field datetime dropoff">
+                            <div class="dropoffDate">
+                                <mat-form-field appearance="fill">
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-hint>MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="form-field continue">
+                            <button class="submit">Continue</button>
+                        </div>
+                    </div>
+                    <div class="footer-row">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="main-background">
+            <div class="background-img">
+                <img src="https://images.hertz.com/content/dam/irac/Overlay/enUS/Heroes/Homepage_Valley_Hero_Desktop.jpg"
+                    alt="">
+            </div>
+        </div>
+    </div>
+</div>
