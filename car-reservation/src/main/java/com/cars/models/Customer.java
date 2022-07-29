@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -25,11 +24,11 @@ public class Customer {
 	
 	@NotBlank
 	@Column(name = "first_name")
-	private String first_name;
+	private String firstName;
 	
 	@NotBlank
 	@Column(name = "last_name")
-	private String last_name;
+	private String lastName;
 	
 	@NotBlank
 	@Column(name = "date_of_birth")
@@ -49,15 +48,14 @@ public class Customer {
 	public Customer() {
 		super();
 	}
-
 	
 
-	public Customer(int id, @NotBlank String first_name, @NotBlank String last_name, @NotBlank String dateOfBirth,
+	public Customer(int id, @NotBlank String firstName, @NotBlank String lastName, @NotBlank String dateOfBirth,
 			@NotBlank String email, @NotBlank String phoneNumber, Set<Reservation> reservation) {
 		super();
 		this.id = id;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
@@ -66,11 +64,11 @@ public class Customer {
 
 
 
-	public Customer(@NotBlank String first_name, @NotBlank String last_name, @NotBlank String dateOfBirth,
+	public Customer(@NotBlank String firstName, @NotBlank String lastName, @NotBlank String dateOfBirth,
 			@NotBlank String email, @NotBlank String phoneNumber, Set<Reservation> reservation) {
 		super();
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
@@ -85,20 +83,20 @@ public class Customer {
 		this.id = id;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getDateOfBirth() {
@@ -135,7 +133,7 @@ public class Customer {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(dateOfBirth, email, first_name, id, last_name, phoneNumber);
+		return Objects.hash(dateOfBirth, email, firstName, id, lastName, phoneNumber);
 	}
 
 	@Override
@@ -148,8 +146,8 @@ public class Customer {
 			return false;
 		Customer other = (Customer) obj;
 		return Objects.equals(dateOfBirth, other.dateOfBirth) && Objects.equals(email, other.email)
-				&& Objects.equals(first_name, other.first_name) && id == other.id
-				&& Objects.equals(last_name, other.last_name) && Objects.equals(phoneNumber, other.phoneNumber);
+				&& Objects.equals(firstName, other.firstName) && id == other.id
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(phoneNumber, other.phoneNumber);
 	}
 
 	
