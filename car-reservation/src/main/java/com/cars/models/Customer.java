@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer {
 
 	
