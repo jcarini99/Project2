@@ -53,8 +53,8 @@ public class CarController {
 	// update
 	@PutMapping("/{id}")
 	public Car update(@Valid @RequestBody Car car, @PathVariable int id) {
-		
-		return carService.updateCar(car, id); // 
+		car.setId(id);
+		return carService.saveCar(car); // 
 	}
 
 	// delete by id

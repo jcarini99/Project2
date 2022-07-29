@@ -16,7 +16,7 @@ public interface CarService {
 	Car saveCar(Car car);
 
 	// Update operation
-	Car updateCar(Car car, int carId);
+//	Car updateCar(Car car, int carId); exactly the same as saveCar()
 
 	// Delete operation
 	void deleteCarById(int carId);

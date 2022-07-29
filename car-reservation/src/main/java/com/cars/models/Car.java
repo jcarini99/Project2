@@ -34,11 +34,11 @@ public class Car {
 	@Column
 	private String model;
 
-	@NotBlank
+	@NotNull
 	@Column
 	private int year;
 	
-	@NotBlank
+	@NotNull
 	@Column
 	private int tier;
 	
