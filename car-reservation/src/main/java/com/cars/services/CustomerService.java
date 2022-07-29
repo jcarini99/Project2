@@ -13,6 +13,6 @@ public interface CustomerService {
 	List<Reservation> findReservationByCustomerId(int id);
 	Customer findById(int id);
 	Customer save(Customer customer);
-	Customer update(Customer customer);
+//	Customer update(Customer customer); Exactly the same as save()
 	void deleteById(int id);
 }
