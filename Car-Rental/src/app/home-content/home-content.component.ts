@@ -9,6 +9,7 @@ import { CarApiService } from '../car-api.service';
 export class HomeContentComponent implements OnInit {
 
   service :CarApiService;
+  value = 'Clear me';
 
   constructor(service :CarApiService) {
     this.service = service;
