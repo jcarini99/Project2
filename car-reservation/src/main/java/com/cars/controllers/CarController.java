@@ -29,7 +29,7 @@ public class CarController {
 
 	// find all
 	@GetMapping
-	public List<Car> findAll() {
+	public List<Car> fetchCarList() {
 		
 		// List will get transformed by Jackson into a JSON array
 		return carService.fetchCarList();
@@ -40,26 +40,26 @@ public class CarController {
 	// find by id
 	// The {id} symbolizes that I can pull this out of the URL path
 	@GetMapping("/{id}")
-	public Car findById(@PathVariable int id) {
+	public Car fetchCarById(@PathVariable int id) {
 		return carService.fetchCarById(id);
 	}
 
 	// create/save
 	@PostMapping
-	public Car save(@Valid @RequestBody Car car) {
+	public Car saveCar(@Valid @RequestBody Car car) {
 		return carService.saveCar(car);
 	}
 
 	// update
 	@PutMapping("/{id}")
-	public Car update(@Valid @RequestBody Car car, @PathVariable int id) {
-		
-		return carService.updateCar(car, id); // 
+	public Car updateCar(@Valid @RequestBody Car car, @PathVariable int id) {
+		car.setId(id);
+		return carService.saveCar(car); // 
 	}
 
 	// delete by id
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable int id) {
+	public void deleteCarById(@PathVariable int id) {
 		// Deletes car
 		carService.deleteCarById(id);
 	}
