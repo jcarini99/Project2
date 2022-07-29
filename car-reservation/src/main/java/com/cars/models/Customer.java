@@ -1,12 +1,14 @@
 package com.cars.models;
 
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -41,15 +43,17 @@ public class Customer {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	
-	@OneToOne(mappedBy = "customer")
-	private Reservation reservation;
+	@OneToMany(mappedBy = "customer")
+	private Set<Reservation> reservation;
 	
 	public Customer() {
 		super();
 	}
 
+	
+
 	public Customer(int id, @NotBlank String first_name, @NotBlank String last_name, @NotBlank String dateOfBirth,
-			@NotBlank String email, @NotBlank String phoneNumber, Reservation reservation) {
+			@NotBlank String email, @NotBlank String phoneNumber, Set<Reservation> reservation) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
@@ -60,8 +64,10 @@ public class Customer {
 		this.reservation = reservation;
 	}
 
+
+
 	public Customer(@NotBlank String first_name, @NotBlank String last_name, @NotBlank String dateOfBirth,
-			@NotBlank String email, @NotBlank String phoneNumber, Reservation reservation) {
+			@NotBlank String email, @NotBlank String phoneNumber, Set<Reservation> reservation) {
 		super();
 		this.first_name = first_name;
 		this.last_name = last_name;
@@ -119,11 +125,11 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Reservation getReservation() {
+	public Set<Reservation> getReservation() {
 		return reservation;
 	}
 
-	public void setReservation(Reservation reservation) {
+	public void setReservation(Set<Reservation> reservation) {
 		this.reservation = reservation;
 	}
 

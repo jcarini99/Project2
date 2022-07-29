@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -22,7 +23,7 @@ public class Car {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "car_id")
-	@OneToOne(mappedBy = "cars") 
+//	@OneToMany(mappedBy = "cars") 
 	private int id;
 	
 	@NotBlank
@@ -57,7 +58,7 @@ public class Car {
 	}
 
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
