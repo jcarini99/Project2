@@ -41,8 +41,7 @@ public class ReservationServiceImpl implements ReservationService{
         	resDB.setCustomer(reservation.getCustomer());
         	resDB.setStart(reservation.getStart());
         	resDB.setEnd(reservation.getEnd());
-        	
-        	
+        	resDB.setCar(reservation.getCar());
         }
 
 
