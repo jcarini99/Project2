@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -42,7 +42,7 @@ public class Customer {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	
-	@OneToOne(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer")
 	private Set<Reservation> reservation;
 	
 	public Customer() {
