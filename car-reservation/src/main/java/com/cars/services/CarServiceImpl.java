@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cars.models.Car;
-import com.cars.models.Reservation;
 import com.cars.repository.CarRepository;
-import com.cars.repository.ReservationRepository;
 
 @Service
 @Transactional // Adds @Transactional to all methods of this class
