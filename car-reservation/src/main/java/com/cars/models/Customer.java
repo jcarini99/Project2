@@ -12,8 +12,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Customer {
 
 	
@@ -31,16 +36,17 @@ public class Customer {
 	private String lastName;
 	
 	@NotBlank
-	@Column(name = "date_of_birth")
-	private String dateOfBirth;
-	
-	@NotBlank
 	@Column(name = "email")
 	private String email;
 	
 	@NotBlank
 	@Column(name = "phone_number")
 	private String phoneNumber;
+	
+	@NotBlank
+	@Column(name = "date_of_birth")
+	private String dateOfBirth;
+	
 	
 	@OneToMany(mappedBy = "customer")
 	private Set<Reservation> reservation;
@@ -50,29 +56,30 @@ public class Customer {
 	}
 	
 
-	public Customer(int id, @NotBlank String firstName, @NotBlank String lastName, @NotBlank String dateOfBirth,
-			@NotBlank String email, @NotBlank String phoneNumber, Set<Reservation> reservation) {
+	public Customer(int id, @NotBlank String firstName, @NotBlank String lastName, @NotBlank String email,
+			@NotBlank String phoneNumber, @NotBlank String dateOfBirth, Set<Reservation> reservation) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.dateOfBirth = dateOfBirth;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.dateOfBirth = dateOfBirth;
 		this.reservation = reservation;
 	}
 
 
 
-	public Customer(@NotBlank String firstName, @NotBlank String lastName, @NotBlank String dateOfBirth,
-			@NotBlank String email, @NotBlank String phoneNumber, Set<Reservation> reservation) {
+	public Customer(@NotBlank String firstName, @NotBlank String lastName, @NotBlank String email, 
+			@NotBlank String phoneNumber, @NotBlank String dateOfBirth, Set<Reservation> reservation) {
 		super();
 		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dateOfBirth = dateOfBirth;
+		this.lastName = lastName;	
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.dateOfBirth = dateOfBirth;
 		this.reservation = reservation;
+		
 	}
 
 	public int getId() {
@@ -130,10 +137,11 @@ public class Customer {
 	public void setReservation(Set<Reservation> reservation) {
 		this.reservation = reservation;
 	}
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(dateOfBirth, email, firstName, id, lastName, phoneNumber);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -145,9 +153,7 @@ public class Customer {
 		if (getClass() != obj.getClass())
 			return false;
 		Customer other = (Customer) obj;
-		return Objects.equals(dateOfBirth, other.dateOfBirth) && Objects.equals(email, other.email)
-				&& Objects.equals(firstName, other.firstName) && id == other.id
-				&& Objects.equals(lastName, other.lastName) && Objects.equals(phoneNumber, other.phoneNumber);
+		return id == other.id;
 	}
 
 	
