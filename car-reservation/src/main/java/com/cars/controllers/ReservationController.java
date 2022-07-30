@@ -19,14 +19,7 @@ import com.cars.services.ReservationService;
 
 @RestController
 @CrossOrigin(origins = "*")
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 @RequestMapping("/reservations")
->>>>>>> Stashed changes
-=======
-@RequestMapping("/reservations")
->>>>>>> Stashed changes
 public class ReservationController {
 	
 	@Autowired 
