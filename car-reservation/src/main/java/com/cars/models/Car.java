@@ -139,4 +139,12 @@ public class Car {
 		return id == other.id;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", make=" + make + ", model=" + model + ", year=" + year + ", tier=" + tier
+				+ ", reservation=" + reservation + "]";
+	}
+
+	
 }

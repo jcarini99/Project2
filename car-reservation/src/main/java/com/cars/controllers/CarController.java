@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cars.models.Car;
@@ -27,6 +28,7 @@ public class CarController {
 	@Autowired
 	private CarService carService;
 
+	
 	// find all
 	@GetMapping
 	public List<Car> fetchCarList() {
@@ -35,6 +37,13 @@ public class CarController {
 		return carService.fetchCarList();
 		
 
+	}
+	
+	// find all available cars
+	@GetMapping("/available")
+	public List<Car> fetchCarList(@RequestParam(name = "dateStart") String dateStart, @RequestParam(name = "dateEnd") String dateEnd) {
+		
+		return carService.fetchAvailableCarList(dateStart, dateEnd);
 	}
 
 	// find by id
