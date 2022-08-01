@@ -21,5 +21,8 @@ export class VehicleListComponent implements OnInit {
       console.log("vehicles", this.vehicles)
     })
   }
+  submit(e :Event) :void {
+
+  }
 
 }

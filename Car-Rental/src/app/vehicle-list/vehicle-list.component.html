@@ -12,7 +12,7 @@
 
                     </div>
                     <div class="select">
-                        <button class="select-btn">Select</button>
+                        <button [attr.data-vehicle-id]="vehicle.id" class="select-btn" (click)="submit($event)">Select</button>
                     </div>
                 </div>
             </div>
