@@ -1,8 +1,11 @@
 .home {
     position: relative;
+    height: 100%;
+    width: 100%;
 }
 .content-container{
     position: relative;
+    height: 100%;
 }
 .form-section{
     position: absolute;
@@ -11,7 +14,7 @@
 .reservation-form-container{
     /* min-width: 1400px; */
     padding: 20px 15px 10px;
-    margin-top: 120px;
+    margin-top: 60px;
     width: 100%;
 }
 .reservation-header {
@@ -25,7 +28,7 @@
     font-weight: normal;
 }
 .reservation-form{
-    display: flex;
+    max-width: 100%;
     min-height: 150px;
     padding: 30px 40px;
     background: #FFF;
@@ -44,7 +47,7 @@
     color: #000;
 }
 .form-field{
-    width: calc(100% / 4 - 100px);
+    margin-right: 20px;
 }
 button {
     display: inline-block;
@@ -66,10 +69,14 @@ button {
     color: #000;
     background-color: #fc0;
     border: 2px solid #fc0;
+    cursor: pointer;
+}
+.submit:hover{
+    box-shadow: 0px 2px 8px rgb(0 0 0 / 16%);
 }
 .background-img{
     position: static;
-    height: 737px;
+    height: 100%;
     width: 100%;
     overflow: hidden;
 }
@@ -79,3 +86,22 @@ button {
     object-fit: cover;
 
 }
+.main-background {
+    height: 100%;
+}
+.manage-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.manage-row .left-side{
+display: flex;
+}
+.manage-row .right-side{
+display: flex;
+}
+.manage-row .right-side .link{
+    color: #365ad8;
+    text-decoration: none;
+    }

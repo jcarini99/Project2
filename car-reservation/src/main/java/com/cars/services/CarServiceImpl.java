@@ -18,6 +18,7 @@ public class CarServiceImpl implements CarService {
 	private CarRepository carRepository;
 
 
+
 	@Override
 	public List<Car> fetchCarList() {
 
@@ -75,13 +76,21 @@ public class CarServiceImpl implements CarService {
 //        }
 //    return carRepository.save(carDB);
 //	}
-
+	
 	@Override
 	public void deleteCarById(int carId) {
 		
 		carRepository.deleteById(carId);
 		
 	}
+
+
+@Override
+public List<Car> fetchAvailableCarList(String dateStart, String dateEnd) {
+	
+	return (List<Car>) carRepository.findCarsWithoutReservation(dateStart, dateEnd);
+	
+}
 
 	
 
