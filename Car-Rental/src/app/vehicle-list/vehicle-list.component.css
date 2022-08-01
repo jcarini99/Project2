@@ -1,23 +1,24 @@
 .vehicle-reservation-container{
     background-color: #FFF;
-    padding: 10px;
     margin: 0 auto;
+    position: relative;
     height: 100%;
+    width: 100%;
+
 }
 .vehicle-reservation-container .vehicle-container{
 
 }
 .vehicle-reservation-container .vehicle-container .vehicle-header{
-    font-size: 28px;
-    font-weight: 300;
+    padding: 20px;
 }
 .vehicle-reservation-container .vehicle-container .vehicle-header .title{
+    margin: 0;
     color: #000000;
 }
 .vehicle-reservation-container .vehicle-container .vehicles{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     padding: 12px 0;
 }
 .vehicle-reservation-container .vehicle-container .vehicles .vehicle-img-container{
@@ -32,14 +33,14 @@
     width: 100%;
 }
 .vehicle-reservation-container .vehicle-container .vehicles .vehicle{
-    width: calc(100% / 3 - 45px);
+    width: calc(100% / 4 - 64px);
     box-shadow: 0px 2px 8px rgb(0 0 0 / 16%);
     padding: 16px;
     border-radius: 4px;
     border: 1px solid #D7D8D8;
     background-color: #fff;
     border-bottom: 6px solid #FFCC00;
-    margin: 0 0 15px 0;
+    margin: 15px;
     position: relative;
 }
 .vehicle-reservation-container .vehicle-container .vehicles .vehicle .vehicle-pricing{

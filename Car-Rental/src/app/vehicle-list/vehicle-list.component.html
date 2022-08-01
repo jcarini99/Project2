@@ -5,14 +5,18 @@
         </div>
         <div class="vehicles">
             <div class="vehicle" *ngFor="let vehicle of vehicles">
-                <div class="vehicle-img-container"><img class="vehicle-img" src="https://dutcheauction.com/images/default-car.png" alt=""></div>
+                <div class="vehicle-img-container"><img class="vehicle-img"
+                        src="https://dutcheauction.com/images/default-car.png" alt=""></div>
                 <div class="vehicle-header">{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}</div>
                 <div class="vehicle-pricing">
                     <div class="price-info">
 
                     </div>
                     <div class="select">
-                        <button [attr.data-vehicle-id]="vehicle.id" class="select-btn" (click)="submit($event)">Select</button>
+                        <button [attr.data-vehicle-id]="vehicle.id" [attr.data-vehicle-make]="vehicle.make"
+                            [attr.data-vehicle-model]="vehicle.model" [attr.data-vehicle-year]="vehicle.year"
+                            [attr.data-vehicle-tier]="vehicle.tier" class="select-btn"
+                            (click)="submit($event)">Select</button>
                     </div>
                 </div>
             </div>

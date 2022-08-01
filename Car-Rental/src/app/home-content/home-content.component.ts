@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class HomeContentComponent implements OnInit {
 
   service :CarApiService;
-  value = 'Clear me';
+  value = 'Pennsylvania, PA';
   today = new Date();
   dateStart :any;
   dateEnd :any;
@@ -36,8 +36,8 @@ export class HomeContentComponent implements OnInit {
     {
       this.dateStart = this.dateStart.getFullYear() + "-" + (this.dateStart.getMonth() + 1) + "-" + this.dateStart.getDate();
       this.dateEnd = this.dateEnd.getFullYear() + "-" + (this.dateEnd.getMonth() + 1) + "-" + this.dateEnd.getDate();
-      this.service.reservationTimes={dateStart: this.dateStart}
-      this.service.reservationTimes={dateEnd: this.dateEnd}
+      this.service.reservationTimes={dateStart: this.dateStart,
+                                      dateEnd: this.dateEnd}
       this.router.navigateByUrl('/cars')
     }
   }

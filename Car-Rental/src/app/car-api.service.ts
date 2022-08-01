@@ -8,8 +8,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CarApiService {
 
-  reservationTimes :any;
-  chosenVehicle :any;
+  reservationTimes :any = {dateStart: null,
+                          dateEnd: null};
+  chosenVehicle :any = {id: null,
+                        make: null,
+                        model: null,
+                        year: null,
+                        tier: null}; 
+
 
   http :HttpClient;
 

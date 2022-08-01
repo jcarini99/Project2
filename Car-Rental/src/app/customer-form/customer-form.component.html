@@ -1,1 +1,123 @@
-<p>customer-form works!</p>
+<div class="customer-checkout">
+    <div class="customer-checkout-container">
+        <h1 class="checkout-header">Checkout</h1>
+        <div class="review-container">
+            <div class="customer-form-container">
+                <div class="form-header">
+                    <h4>Driver Details</h4>
+                </div>
+                <div class="customer-form">
+                    <form class="example-form">
+                        <table class="example-full-width" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>First name</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Last Name</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="example-full-width" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Email</mat-label>
+                                        <input type="email" matInput emailFormControl [errorStateMatcher]="matcher"
+                                            placeholder="Ex. pat@example.com">
+                                        <mat-error
+                                            *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                            Please enter a valid email address
+                                        </mat-error>
+                                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                                            Email is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="example-full-width" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Verify Email</mat-label>
+                                        <input type="email" matInput emailFormControl [errorStateMatcher]="matcher"
+                                            placeholder="Ex. pat@example.com">
+                                        <mat-error
+                                            *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                            Please enter a valid email address
+                                        </mat-error>
+                                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                                            Email is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="example-full-width" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Phone Number</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Dob</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="reservation-container">
+                <div class="reservation-times">
+                    <div class="left-side">
+                        <div class="pickup">
+                            <div class="type">Pick-up</div>
+                            <div class="location"></div>
+                            <div class="date"> {{dateStart}}</div>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="dropoff">
+                            <div class="type">Drop-off</div>
+                            <div class="location"></div>
+                            <div class="date">{{dateEnd}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reserved-vehicle">
+                    <div class="vehicle-img-container"><img class="vehicle-img"
+                            src="https://dutcheauction.com/images/default-car.png" alt=""></div>
+                    <div class="vehicle-header">{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}</div>
+                </div>
+            </div>
+            <div class="price-container">
+                <div class="price-info">
+                    <div class="price-header">
+                        <h2 class="total-label">Est. Total</h2>
+                        <h2 class="total">400.00 USD</h2>
+                    </div>
+                    <div class="price-pickup">
+                        <p class="total-label">Charged At Pickup</p>
+                        <p class="total">400.00 USD</p>
+                    </div>
+                    <div class="rate-details"></div>
+                    <button class="select-btn" (click)="submit($event)">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

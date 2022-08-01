@@ -1,8 +1,11 @@
 .home {
     position: relative;
+    height: 100%;
+    width: 100%;
 }
 .content-container{
     position: relative;
+    height: 100%;
 }
 .form-section{
     position: absolute;
@@ -44,7 +47,7 @@
     color: #000;
 }
 .form-field{
-    width: calc(100% / 4 - 100px);
+    margin-right: 20px;
 }
 button {
     display: inline-block;
@@ -69,7 +72,7 @@ button {
 }
 .background-img{
     position: static;
-    height: 737px;
+    height: 100%;
     width: 100%;
     overflow: hidden;
 }
@@ -78,4 +81,7 @@ button {
     height: 100%;
     object-fit: cover;
 
+}
+.main-background {
+    height: 100%;
 }

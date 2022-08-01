@@ -15,5 +15,5 @@ body {
     background: #f5f5f5;
     position: relative;
     padding-top: 80px;
-    height: calc(100% - 80px);
+    height: calc(100%);
 }
