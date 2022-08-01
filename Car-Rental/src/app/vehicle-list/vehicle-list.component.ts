@@ -9,12 +9,17 @@ import { CarApiService } from '../car-api.service';
 export class VehicleListComponent implements OnInit {
 
   service :CarApiService;
+  vehicles :Array<any> = [];
 
   constructor(service :CarApiService) {
     this.service = service;
    }
 
   ngOnInit(): void {
+    this.service.findAllAvailableCars().subscribe( data => {
+      this.vehicles = data;
+      console.log("vehicles", this.vehicles)
+    })
   }
 
 }

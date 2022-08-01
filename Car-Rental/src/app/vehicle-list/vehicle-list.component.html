@@ -4,9 +4,9 @@
             <h1 class="title">Showing All Vehicle Results</h1>
         </div>
         <div class="vehicles">
-            <div class="vehicle">
-                <div class="vehicle-img"></div>
-                <div class="vehicle-header"></div>
+            <div class="vehicle" *ngFor="let vehicle of vehicles">
+                <div class="vehicle-img-container"><img class="vehicle-img" src="https://dutcheauction.com/images/default-car.png" alt=""></div>
+                <div class="vehicle-header">{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}</div>
                 <div class="vehicle-pricing"></div>
             </div>
         </div>

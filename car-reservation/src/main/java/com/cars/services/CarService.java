@@ -9,6 +9,8 @@ public interface CarService {
 	// Read operation
 	List<Car> fetchCarList();
 	
+	List<Car> fetchAvailableCarList(String dateStart, String dateEnd);
+	
 	//Read by id
 	Car fetchCarById(int carId);
 
