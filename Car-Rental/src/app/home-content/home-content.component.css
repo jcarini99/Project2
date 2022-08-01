@@ -28,7 +28,7 @@
     font-weight: normal;
 }
 .reservation-form{
-    display: flex;
+    max-width: 100%;
     min-height: 150px;
     padding: 30px 40px;
     background: #FFF;
@@ -89,3 +89,19 @@ button {
 .main-background {
     height: 100%;
 }
+.manage-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.manage-row .left-side{
+display: flex;
+}
+.manage-row .right-side{
+display: flex;
+}
+.manage-row .right-side .link{
+    color: #365ad8;
+    text-decoration: none;
+    }
