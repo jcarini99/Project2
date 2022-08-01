@@ -69,6 +69,10 @@ button {
     color: #000;
     background-color: #fc0;
     border: 2px solid #fc0;
+    cursor: pointer;
+}
+.submit:hover{
+    box-shadow: 0px 2px 8px rgb(0 0 0 / 16%);
 }
 .background-img{
     position: static;
