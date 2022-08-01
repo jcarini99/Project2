@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarApiService } from '../car-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -11,7 +12,7 @@ export class VehicleListComponent implements OnInit {
   service :CarApiService;
   vehicles :Array<any> = [];
 
-  constructor(service :CarApiService) {
+  constructor(service :CarApiService, private router: Router) {
     this.service = service;
    }
 
@@ -21,8 +22,10 @@ export class VehicleListComponent implements OnInit {
       console.log("vehicles", this.vehicles)
     })
   }
-  submit(e :Event) :void {
 
+  submit(e :any) :void {
+    this.service.chosenVehicle = {id: e.target.getAttribute("data-vehicle-id")}
+    this.router.navigateByUrl('/customers')
   }
 
 }
