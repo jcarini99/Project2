@@ -46,6 +46,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReserveComponent } from './reserve/reserve.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     NavbarComponent,
     HomeContentComponent,
     VehicleListComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
+    ReserveComponent
   ],
   imports: [
     BrowserModule,

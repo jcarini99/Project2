@@ -23,7 +23,7 @@
                             <div class=" pickupDate">
                                 <mat-form-field appearance="fill">
                                 <mat-label>Choose a date</mat-label>
-                                <input matInput [matDatepicker]="picker" [min]="today">
+                                <input matInput [matDatepicker]="picker" [min]="today" (dateInput)="updateDateStart($event.value)" required>
                                 <mat-hint>MM/DD/YYYY</mat-hint>
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
@@ -34,7 +34,7 @@
                             <div class="dropoffDate">
                                 <mat-form-field appearance="fill">
                                 <mat-label>Choose a date</mat-label>
-                                <input matInput [matDatepicker]="picker1" [min]="today">
+                                <input matInput [matDatepicker]="picker1" [min]="today" (dateInput)="updateDateEnd($event.value)" required>
                                 <mat-hint>MM/DD/YYYY</mat-hint>
                                 <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
                                 <mat-datepicker #picker1 ></mat-datepicker>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="form-field continue">
-                            <button class="submit">Continue</button>
+                            <button class="submit" (click)="submit()">Continue</button>
                         </div>
                     </div>
                     <div class="footer-row">
