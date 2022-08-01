@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CarApiService } from '../car-api.service';
 
 
-
-
 @Component({
   selector: 'app-home-content',
   templateUrl: './home-content.component.html',
