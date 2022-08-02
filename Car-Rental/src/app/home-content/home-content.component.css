@@ -33,7 +33,7 @@
     padding: 30px 40px;
     background: #FFF;
     position: relative;
-    border-bottom: 6px solid #fc0;
+    border-bottom: 6px solid #0E67B4;
     border-radius: 12px;
     
 }
@@ -66,9 +66,9 @@ button {
     min-height: 65px;
     font-size: 18px!important;
     border-radius: 5px;
-    color: #000;
-    background-color: #fc0;
-    border: 2px solid #fc0;
+    color: #fff;
+    background-color: #0E67B4;
+    border: 2px solid #0E67B4;
     cursor: pointer;
 }
 .submit:hover{
