@@ -3,8 +3,6 @@ import { CarApiService } from '../car-api.service';
 import { Router } from '@angular/router';
 
 
-
-
 @Component({
   selector: 'app-home-content',
   templateUrl: './home-content.component.html',
@@ -64,5 +62,10 @@ export class HomeContentComponent implements OnInit {
 
   ViewEditCancel(){
     this.VEC = !this.VEC;
+  }
+  
+  // Check if Reservation ID matches Last Name for any reservation and redirect to the checkout page for View / Edit / Cancel
+  VECsubmit() :void{
+
   }
 }
