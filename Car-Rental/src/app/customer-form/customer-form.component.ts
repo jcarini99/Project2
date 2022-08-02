@@ -56,6 +56,7 @@ export class CustomerFormComponent implements OnInit {
       this.vehicleTier = this.service.chosenVehicle.tier;
       this.dateStart = this.service.reservationTimes.dateStart;
       this.dateEnd = this.service.reservationTimes.dateEnd;
+      this.alterDate(this.dateStart, this.dateEnd);
     }
   }
 
@@ -63,4 +64,10 @@ export class CustomerFormComponent implements OnInit {
 
   }
 
+  alterDate(start :any, end :any) :void {
+    const myArray = start.split("-");
+    const myArray2 = end.split("-");
+    this.dateStart = myArray[1] + "-" + myArray[2] + "-" + myArray[0]
+    this.dateEnd = myArray2[1] + "-" + myArray2[2] + "-" + myArray2[0]
+  }
 }

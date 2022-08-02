@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CarApiService } from '../car-api.service';
 import { Router } from '@angular/router';
+import {ThemePalette} from '@angular/material/core';
+import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -11,6 +13,11 @@ export class VehicleListComponent implements OnInit {
 
   service: CarApiService;
   vehicles: Array<any> = [];
+  pageHidden: Boolean = true;
+  loadingIcon: Boolean = false;
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 50;
 
   constructor(service: CarApiService, private router: Router) {
     this.service = service;
@@ -26,8 +33,23 @@ export class VehicleListComponent implements OnInit {
         this.vehicles = data;
         console.log("vehicles", this.vehicles)
       })
+      this.onReady(this.callback)
     }
   }
+  onReady(callback :Function) :void {
+    var intervalId = window.setInterval(function() {
+      if (document.getElementsByClassName('vehicle')[0] != undefined) {
+        window.clearInterval(intervalId);
+        callback();
+      }
+    }, 5000);
+  }
+
+  callback = () => {
+    this.pageHidden =  !this.pageHidden
+    this.loadingIcon = true
+  }
+
 
   submit(e: any): void {
     this.service.chosenVehicle = {
@@ -38,6 +60,7 @@ export class VehicleListComponent implements OnInit {
       tier: e.target.getAttribute("data-vehicle-tier")
     }
     this.router.navigateByUrl('/customers')
+    
   }
 
 }
