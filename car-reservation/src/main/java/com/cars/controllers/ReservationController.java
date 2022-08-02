@@ -44,7 +44,10 @@ public class ReservationController {
     public Reservation saveReservation(
         @Valid @RequestBody Reservation reservation)
     {
-        return reservationService.saveReservation(reservation);
+    	if (reservationService.validateAvailReservation(reservation.getStart(), reservation.getEnd(), reservation.getCar().getId()) == null)
+    		return reservationService.saveReservation(reservation);
+    	else
+    		return null;
     }
  
 

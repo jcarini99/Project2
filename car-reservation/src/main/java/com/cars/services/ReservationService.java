@@ -2,6 +2,7 @@ package com.cars.services;
 
 import java.util.List;
 
+import com.cars.models.Car;
 import com.cars.models.Reservation;
 
 public interface ReservationService {
@@ -18,4 +19,7 @@ public interface ReservationService {
 	
 	// Delete operation
 	void deleteReservationById(int reservationId);
+	
+	//Validate reservations
+	List<Reservation> validateAvailReservation(String dateStart, String dateEnd, int carId);
 }

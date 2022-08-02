@@ -18,7 +18,7 @@ export class VehicleListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("dateStart", this.service.reservationTimes.dateStart)
-    if (this.service.reservationTimes.dateStart == null || this.service.reservationTimes.dateStart == null) {
+    if (this.service.reservationTimes.dateStart == null || this.service.reservationTimes.dateEnd == null) {
       this.router.navigateByUrl('/home')
     }
     else {
