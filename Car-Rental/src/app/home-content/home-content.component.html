@@ -6,52 +6,82 @@
                     <h1>Car Storm Car Reservation. Drive On!</h1>
                 </div>
                 <div class="reservation-form">
-                    <div class="manage-row">
-                        <div class="left-side">
-                            manage:
-                        </div>
-                        <div class="right-side">
-                            <a href="" class="link">View </a> 
-                            <a href="" class="link"> / Edit </a>
-                            <a href="" class="link"> / Cancel</a>
-                        </div>
-                    </div>
-                    <div class="content-row">
-                        <div class="form-field location">
-                            <mat-form-field appearance="fill">
-                            <mat-label>Location</mat-label>
-                            <input matInput type="text" [(ngModel)]="value" disabled>
-                        </mat-form-field>
-                        </div>
-                        <div class="form-field datetime pickup">
-                            <div class=" pickupDate">
-                                <mat-form-field appearance="fill">
-                                <mat-label>Choose a date</mat-label>
-                                <input matInput [matDatepicker]="picker" [min]="today" (dateInput)="updateDateStart($event.value)" required>
-                                <mat-hint>MM/DD/YYYY</mat-hint>
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                            </mat-form-field>
+                    <div *ngIf="!VEC">
+                       <div class="manage-row">
+                            <div class="left-side">
+                                Select Reservation Dates to View Available Cars:
+                            </div>
+                            <div class="right-side">
+                                <button class="link change-view" (click)="ViewEditCancel()">View / Edit / Cancel</button>
                             </div>
                         </div>
-                        <div class="form-field datetime dropoff">
-                            <div class="dropoffDate">
+                        <div class="content-row">
+                            <div class="form-field location">
                                 <mat-form-field appearance="fill">
-                                <mat-label>Choose a date</mat-label>
-                                <input matInput [matDatepicker]="picker1" [min]="today" (dateInput)="updateDateEnd($event.value)" required>
-                                <mat-hint>MM/DD/YYYY</mat-hint>
-                                <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
-                                <mat-datepicker #picker1 ></mat-datepicker>
-                            </mat-form-field>
+                                <mat-label>Location</mat-label>
+                                <input matInput type="text" [(ngModel)]="value" disabled>
+                                </mat-form-field>
                             </div>
+                            <div class="form-field datetime pickup">
+                                <div class=" pickupDate">
+                                    <mat-form-field appearance="fill">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" [min]="today" (dateInput)="updateDateStart($event.value)" required>
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="form-field datetime dropoff">
+                                <div class="dropoffDate">
+                                    <mat-form-field appearance="fill">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker1" [min]="today" (dateInput)="updateDateEnd($event.value)" required>
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1 ></mat-datepicker>
+                                </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="form-field continue">
+                              <button class="submit" (click)="submit()">Continue</button>
+                           </div>
                         </div>
-                        <div class="form-field continue">
-                            <button class="submit" (click)="submit()">Continue</button>
-                        </div>
-                    </div>
-                    <div class="footer-row">
+                        <div class="footer-row">
 
                     </div>
+                    </div>
+                    <div *ngIf="VEC">
+                        <div class="manage-row">
+                             <div class="left-side">
+                                 Enter Reservation ID and Last Name to View, Edit, or Cancel Reservation:
+                             </div>
+                             <div class="right-side">
+                                <button class="change-view" (click)="ViewEditCancel()">Search Available Cars</button>
+                             </div>
+                         </div>
+                         <div class="content-row">
+                             <div class="form-field">
+                                 <mat-form-field appearance="fill">
+                                 <mat-label>Reservation ID</mat-label>
+                                 <input matInput type="text" required>
+                                 </mat-form-field>
+                             </div>
+                             <div class="form-field">
+                                <mat-form-field appearance="fill">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput type="text" required>
+                                </mat-form-field>
+                            </div>
+                             <div class="form-field continue">
+                               <button class="submit" (click)="submit()">Continue</button>
+                            </div>
+                         </div>
+                         <div class="footer-row">
+ 
+                         </div>
+                     </div>
                 </div>
             </div>
         </section>
