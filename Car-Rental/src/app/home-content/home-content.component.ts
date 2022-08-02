@@ -15,6 +15,7 @@ export class HomeContentComponent implements OnInit {
   today = new Date();
   dateStart :any;
   dateEnd :any;
+  VEC :boolean = false;
 
   constructor(service :CarApiService, private router: Router) {
     this.service = service;
@@ -57,5 +58,14 @@ export class HomeContentComponent implements OnInit {
     {
       return false;
     }
+  }
+
+  ViewEditCancel(){
+    this.VEC = !this.VEC;
+  }
+  
+  // Check if Reservation ID matches Last Name for any reservation and redirect to the checkout page for View / Edit / Cancel
+  VECsubmit() :void{
+
   }
 }
