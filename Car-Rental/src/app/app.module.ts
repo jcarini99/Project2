@@ -47,6 +47,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReserveComponent } from './reserve/reserve.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { ReserveComponent } from './reserve/reserve.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    ReactiveFormsModule,
     
   ],
   providers: [],
