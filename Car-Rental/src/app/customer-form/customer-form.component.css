@@ -40,7 +40,7 @@
     background-color: #fff;
     width: fit-content;
     align-items: center;
-    margin: 0 20px;
+    margin-right: 20px;
 }
 .customer-checkout .customer-checkout-container .review-container .reservation-container .reservation-times{
     display: flex;
@@ -49,9 +49,27 @@
 .customer-checkout .customer-checkout-container .review-container .reservation-container .reservation-times .left-side,.right-side{
     border: 1px solid #E6E7EB;
     width: 250px;
+    padding: 20px;
 }
+.customer-checkout .customer-checkout-container .review-container .reservation-container .reservation-times .type, .date, .location{
+    line-height: 28px;
+    margin-bottom: 10px;
+}
+.customer-checkout .customer-checkout-container .review-container .reservation-container .reservation-times .date{
+    font-size: 28px;
+}
+
 .customer-checkout .customer-checkout-container .review-container .reservation-container .reserved-vehicle{
-    
+    display: flex;
+    align-items: center;
+    padding: 30px;
+}
+.customer-checkout .customer-checkout-container .review-container .reservation-container .reserved-vehicle .vehicle-img-container{
+    width: 67%
+}
+.customer-checkout .customer-checkout-container .review-container .reservation-container .reserved-vehicle .vehicle-img-container img{
+    position: relative;
+    width:-webkit-fill-available;
 }
 .example-form {
   min-width: 150px;
@@ -76,22 +94,26 @@ td {
     align-items: center;
     margin: 0 20px;
 }
-.customer-checkout .customer-checkout-container .review-container .price-container .price-info{
-    
+.customer-checkout .customer-checkout-container .review-container .price-info{
 }
-.customer-checkout .customer-checkout-container .review-container .price-container .price-header{
+.customer-checkout .customer-checkout-container .review-container .price-header{
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #D7D8D8;
 }
-.customer-checkout .customer-checkout-container .review-container .price-container .price-pickup{
+.customer-checkout .customer-checkout-container .review-container .price-pickup{
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #D7D8D8;
+    margin-bottom: 30px;
 }
-.customer-checkout .customer-checkout-container .review-container .price-container .price-header .total-label{
+.customer-checkout .customer-checkout-container .review-container .price-header .total-label{
     width: 180px;
+    margin-right: -36px;
 }
-.customer-checkout .customer-checkout-container .review-container .price-container .price-pickup .total-label{
+.customer-checkout .customer-checkout-container .review-container .price-pickup .total-label{
     width: 180px;
+    margin-right: 8px;
 }
 button {
     display: inline-block;
