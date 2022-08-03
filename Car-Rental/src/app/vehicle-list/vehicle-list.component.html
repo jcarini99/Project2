@@ -1,4 +1,4 @@
-<div class="vehicle-reservation-container">
+<div class="vehicle-reservation-container" [hidden]="pageHidden">
     <div class="vehicle-container">
         <div class="vehicle-header">
             <h1 class="title">Showing All Vehicle Results</h1>
@@ -22,4 +22,12 @@
             </div>
         </div>
     </div>
+</div>
+<div id="loading" [hidden]="loadingIcon">
+<mat-progress-spinner
+class="example-margin"
+[mode]="mode"
+[color]="color"
+[value]="value">
+</mat-progress-spinner>
 </div>
