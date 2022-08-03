@@ -44,9 +44,8 @@ public class CustomerController {
 		return service.findById(id);
 	}
 	
-	@GetMapping
-	public Customer findByEmail(@Valid @RequestBody Customer customer) {
-		String email = customer.getEmail();
+	@GetMapping("/{email}")
+	public Customer findByEmail(@PathVariable String email) {
 		return service.findByEmail(email);
 	}
 	
