@@ -10,11 +10,16 @@ export class CarApiService {
 
   reservationTimes :any = {dateStart: null,
                           dateEnd: null};
+                          
   chosenVehicle :any = {id: null,
                         make: null,
                         model: null,
                         year: null,
                         tier: null}; 
+
+  reservation :any = null
+  
+
   
 
   http :HttpClient;

@@ -85,6 +85,7 @@ export class CustomerFormComponent implements OnInit {
       this.dateEnd = this.service.reservationTimes.dateEnd;
       this.alterDate(this.dateStart, this.dateEnd);
     }
+    this.service.reservation = null;
   }
 
   submit(): void {
@@ -124,7 +125,10 @@ export class CustomerFormComponent implements OnInit {
         end: this.service.reservationTimes.dateEnd,
       }
         this.service.createReservation(this.reservationObject).subscribe(data => {
-          this.reservation = data;
+          this.service.reservation = data;
+          this.service.reservationTimes = null;
+          this.service.chosenVehicle = null;
+          this.router.navigateByUrl('/review')
         })
       })
     }
