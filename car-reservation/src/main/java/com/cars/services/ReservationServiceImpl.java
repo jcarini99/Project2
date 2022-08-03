@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.cars.models.Car;
+import com.cars.models.Customer;
 import com.cars.models.Reservation;
 import com.cars.repository.ReservationRepository;
 
@@ -35,7 +35,13 @@ public class ReservationServiceImpl implements ReservationService{
 		Optional<Reservation> reservation = reservationRepository.findById(id);
 		return reservation.isPresent() ? reservation.get() : null;
 	}
-
+	
+	@Override
+	public Reservation fetchReservationByIdAndCustomerId(int id, int customerId) {
+		
+		return reservationRepository.findByIdAndCustomerId(id, customerId);
+	}
+		
 	@Override
 	public Reservation updateReservation(Reservation reservation, int reservationId) {
 		
@@ -61,10 +67,14 @@ public class ReservationServiceImpl implements ReservationService{
 		
 	}
 
+
 	@Override
 	public List<Reservation> validateAvailReservation(String dateStart, String dateEnd, int carId) {
 	
 		return (List<Reservation>)reservationRepository.validateCarReservation(dateStart, dateEnd, carId);
 	}
+
+	
+	
 
 }

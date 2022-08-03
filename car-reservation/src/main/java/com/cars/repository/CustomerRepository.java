@@ -13,5 +13,7 @@ import com.cars.models.Reservation;
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 	@Query("select r from Reservation r where r.customer.id = ?1")
 	public List<Reservation> findReservationByCustomerId(int id);
+	
+	public Customer findByEmail(String email);
 
 }

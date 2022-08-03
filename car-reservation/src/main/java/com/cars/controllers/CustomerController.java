@@ -44,6 +44,12 @@ public class CustomerController {
 		return service.findById(id);
 	}
 	
+	@GetMapping
+	public Customer findByEmail(@Valid @RequestBody Customer customer) {
+		String email = customer.getEmail();
+		return service.findByEmail(email);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Customer> create(@Valid @RequestBody Customer customer) {
 		return new ResponseEntity<>(service.save(customer), HttpStatus.CREATED);

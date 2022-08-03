@@ -12,6 +12,7 @@ public interface CustomerService {
 	List<Customer> findAllCustomers(int page, int limit);
 	List<Reservation> findReservationByCustomerId(int id);
 	Customer findById(int id);
+	Customer findByEmail(String email);
 	Customer save(Customer customer);
 //	Customer update(Customer customer); Exactly the same as save()
 	void deleteById(int id);

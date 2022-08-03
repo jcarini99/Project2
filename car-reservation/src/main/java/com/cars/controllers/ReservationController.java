@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cars.models.Customer;
 import com.cars.models.Reservation;
 import com.cars.services.ReservationService;
 
@@ -37,6 +38,14 @@ public class ReservationController {
     @GetMapping("/{id}")
     public Reservation fetchReservationById(@PathVariable int id) {
     	return reservationService.fetchReservationById(id);
+    }
+    
+    @GetMapping
+    public Reservation fetchReservationByIdAndCustomerId(@Valid @RequestBody Reservation reservation) {
+    	int id = reservation.getId();
+    	Customer customer = reservation.getCustomer();
+    	int customerId = customer.getId();
+    	return reservationService.fetchReservationByIdAndCustomerId(id, customerId);
     }
     
     // Save operation
