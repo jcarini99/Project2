@@ -7,7 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.cars.models.Car;
 import com.cars.models.Reservation;
 
 @Repository
@@ -22,6 +21,7 @@ public interface ReservationRepository extends CrudRepository<Reservation, Integ
 		
 //	@Query("SELECT * FROM reservations r WHERE r.reservation_id = ?1 AND r.customer_id = ?2")
 //	public Reservation findReservationByIdAndCustomerId(int id, int customer.getId());
+	
 	
 	public Reservation findByIdAndCustomerId(int id, int customerId);
 }
