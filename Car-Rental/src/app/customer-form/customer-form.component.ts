@@ -142,7 +142,6 @@ export class CustomerFormComponent implements OnInit {
     /*
     console.log("checkoutform", this.checkoutForm.value.dob)
     const datePicked = new Date(String(this.checkoutForm.value.dob))
-
     const diffTime = Math.abs((Date.now() - datePicked.getTime()))
     const age = Math.floor(diffTime / (1000 * 3600 * 24) / 365.25);
     */
