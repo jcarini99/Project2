@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,10 +43,9 @@ public class ReservationController {
     
     // Save operation
     @PostMapping 
-    public Reservation saveReservation(
-        @Valid @RequestBody Reservation reservation)
+    public ResponseEntity<Reservation> saveReservation(@Valid @RequestBody Reservation reservation)
     {
-        return reservationService.saveReservation(reservation);
+        return new ResponseEntity<>(reservationService.saveReservation(reservation), HttpStatus.CREATED);
     }
  
 

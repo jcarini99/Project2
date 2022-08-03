@@ -48,6 +48,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReserveComponent } from './reserve/reserve.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeContentComponent,
     VehicleListComponent,
     CustomerFormComponent,
-    ReserveComponent
+    ReserveComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

@@ -46,16 +46,18 @@ export class CustomerFormComponent implements OnInit {
   vehicleYear: any;
   vehicleTier: any;
   reservation: any = {}
+  reservationObject: any = {}
+  customerObject: any = {}
   customer: Array<any> = [];
   customerId: number = 0;
 
   checkoutForm = new FormGroup({
-    fname: new FormControl('', [Validators.pattern(/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/), Validators.required, Validators.minLength(1)]),
-    lname: new FormControl('', [Validators.pattern(/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/), Validators.required, Validators.minLength(1)]),
+    firstName: new FormControl('', [Validators.pattern(/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/), Validators.required, Validators.minLength(1)]),
+    lastName: new FormControl('', [Validators.pattern(/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/), Validators.required, Validators.minLength(1)]),
     email: new FormControl('', [Validators.email, Validators.required]),
     email2: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [Validators.pattern(/^\+?\d*$/), Validators.required, Validators.minLength(10)]),
-    dob: new FormControl('', [Validators.required, verifyAgeValidator])
+    dateOfBirth: new FormControl('', [Validators.required, verifyAgeValidator])
   }, { validators: [confirmEmailValidator] });
 
   constructor(service: CarApiService, private router: Router) {
@@ -71,22 +73,7 @@ export class CustomerFormComponent implements OnInit {
       this.router.navigateByUrl('/cars')
     }
     else {
-/* Creating a reservation object with the car, customer, start, and end properties. */
-      this.reservation = {
 
-        car: {
-          id: this.service.chosenVehicle.id,
-          make: this.service.chosenVehicle.make,
-          model: this.service.chosenVehicle.model,
-          year: this.service.chosenVehicle.year,
-          tier: this.service.chosenVehicle.tier,
-        },
-        customer: {
-          id: this.customerId,
-        },
-        start: this.service.reservationTimes.dateStart,
-        end: this.service.reservationTimes.dateEnd,
-      }
 
       this.vehicle = this.service.chosenVehicle;
       this.vehicleId = this.service.chosenVehicle.id;
@@ -106,12 +93,39 @@ export class CustomerFormComponent implements OnInit {
       return;
     }
     else {
-      this.service.createCustomer(this.checkoutForm).subscribe(data => {
+      let dob = this.checkoutForm.controls['dateOfBirth'].value;
+      let dateob = new Date(String(dob));
+      let date = dateob.getFullYear() + "-" + (dateob.getMonth() + 1) + "-" + dateob.getDate();
+      this.customerObject = {
+        firstName:this.checkoutForm.controls['firstName'].value,
+        lastName:this.checkoutForm.controls['lastName'].value,
+        email:this.checkoutForm.controls['email'].value,
+        phoneNumber: this.checkoutForm.controls['phoneNumber'].value,
+        dateOfBirth: date,
+      }
+      console.log("checkout form value", this.customerObject)
+      this.service.createCustomer(this.customerObject).subscribe(data => {
         this.customer = data;
         this.customerId = data.id;
-      })
-      this.service.createReservation(this.reservation).subscribe(data => {
+        /* Creating a reservation object with the car, customer, start, and end properties. */
+      this.reservationObject = {
 
+        car: {
+          id: this.service.chosenVehicle.id,
+          make: this.service.chosenVehicle.make,
+          model: this.service.chosenVehicle.model,
+          year: this.service.chosenVehicle.year,
+          tier: this.service.chosenVehicle.tier,
+        },
+        customer: {
+          id: this.customerId,
+        },
+        start: this.service.reservationTimes.dateStart,
+        end: this.service.reservationTimes.dateEnd,
+      }
+        this.service.createReservation(this.reservationObject).subscribe(data => {
+          this.reservation = data;
+        })
       })
     }
 
@@ -135,7 +149,7 @@ export class CustomerFormComponent implements OnInit {
   }
 
   showDoBError() {
-    if (!this.checkoutForm.value.dob) return true;
+    if (!this.checkoutForm.value.dateOfBirth) return true;
     return false;
   }
 

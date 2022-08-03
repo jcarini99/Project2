@@ -24,7 +24,7 @@ export class CarApiService {
     this.http = http;
   }
   createReservation(reservation :any) :Observable<any>{
-    return this.http.post(environment.apiUrl +'/reservations', reservation)
+    return this.http.post(environment.apiUrl +'reservations', reservation)
   }
   createCustomer(customer :any) :Observable<any> {
     return this.http.post(environment.apiUrl + 'customers/', customer)
@@ -32,4 +32,12 @@ export class CarApiService {
   findAllAvailableCars() :Observable<any> {
     return this.http.get(environment.apiUrl + 'cars/available/?dateStart=' + this.reservationTimes.dateStart + '&dateEnd=' + this.reservationTimes.dateEnd);
   }
+  /*
+  findReservation(id :number, lname :string) :Observable<any> {
+    return this.http.get(environment.apiUrl + 'reservations/' + id + '/' + lname)
+  }
+  findReservationById(id :number) :Observable<any> {
+    return this.http.get(environment.apiUrl + 'reservations/' + id)
+  }
+  */
 }
