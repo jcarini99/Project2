@@ -23,4 +23,5 @@ public interface ReservationService {
 	
 	//Validate reservations
 	List<Reservation> validateAvailReservation(String dateStart, String dateEnd, int carId);
+	List<Reservation> validateAvailUpdate(String dateStart, String dateEnd, int carId, int reservationId);
 }
