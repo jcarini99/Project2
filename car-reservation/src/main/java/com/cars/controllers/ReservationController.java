@@ -48,7 +48,7 @@ public class ReservationController {
     @PostMapping
     public Reservation saveReservation(@Valid @RequestBody Reservation reservation) {
         if (reservationService.validateAvailReservation(reservation.getStart(), reservation.getEnd(),
-                reservation.getCar().getId()) == null)
+                reservation.getCar().getId()) != null)
             return reservationService.saveReservation(reservation);
         else
             return null;
