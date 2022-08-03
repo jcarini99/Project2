@@ -38,6 +38,11 @@ public class CustomerServiceImpl implements CustomerService{
 		Optional<Customer> customer = repository.findById(id);
 		return customer.isPresent() ? customer.get() : null;
 	}
+	
+	@Override
+	public Customer findByEmail(String email) {
+		return repository.findByEmail(email);
+	}
 
 //	Exactly the same as save()
 //	@Override
@@ -46,7 +51,7 @@ public class CustomerServiceImpl implements CustomerService{
 //		return (Customer) repository.save(customer);
 //	}
 
-		@Override
+	@Override
 	public Customer save(Customer customer) {
 		// Resolve type casting issue
 		return (Customer) repository.save(customer);

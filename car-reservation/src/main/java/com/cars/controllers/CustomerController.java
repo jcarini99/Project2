@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import com.cars.models.Reservation;
 import com.cars.services.CustomerService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/customers")
 public class CustomerController {
 
@@ -42,6 +44,11 @@ public class CustomerController {
 	@GetMapping("/{id}")
 	public Customer findById(@PathVariable int id) {
 		return service.findById(id);
+	}
+	
+	@GetMapping("/{email}")
+	public Customer findByEmail(@PathVariable String email) {
+		return service.findByEmail(email);
 	}
 	
 	@PostMapping

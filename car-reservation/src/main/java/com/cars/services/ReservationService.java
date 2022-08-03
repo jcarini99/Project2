@@ -13,6 +13,7 @@ public interface ReservationService {
 	// Read operations
 	List<Reservation> fetchReservationList();
 	Reservation fetchReservationById(int id);
+	Reservation fetchReservationByIdAndCustomerId(int id, int customerId);
 	
 	// Update operation
 	Reservation updateReservation(Reservation reservation, int reservationId);
