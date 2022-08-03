@@ -41,10 +41,10 @@ export class CustomerFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.service.reservationTimes.dateStart == null || this.service.reservationTimes.dateStart == null) {
+    if (this.service.reservationTimes.dateStart == null || this.service.reservationTimes.dateEnd == null) {
       this.router.navigateByUrl('/home')
     }
-    else if ((this.service.reservationTimes.dateStart != null && this.service.reservationTimes.dateStart != null) && this.service.chosenVehicle.id == null) {
+    else if ((this.service.reservationTimes.dateStart != null && this.service.reservationTimes.dateEnd != null) && this.service.chosenVehicle.id == null) {
       this.router.navigateByUrl('/cars')
     }
     else {
