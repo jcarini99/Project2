@@ -32,6 +32,7 @@
 }
 .customer-checkout .customer-checkout-container .customer-form-container .customer-form{
     padding: 15px;
+    margin-top: 50px;
 }
 .customer-checkout .customer-checkout-container .review-container .reservation-container{
     box-shadow: 0px 2px 8px rgb(0 0 0 / 16%);
