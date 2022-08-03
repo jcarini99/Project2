@@ -46,6 +46,7 @@ export class CustomerFormComponent implements OnInit {
   vehicleYear: any;
   vehicleTier: any;
   reservation: any = {}
+  customer: Array<any> = [];
   customerId: number = 0;
 
   checkoutForm = new FormGroup({
@@ -106,6 +107,7 @@ export class CustomerFormComponent implements OnInit {
     }
     else {
       this.service.createCustomer(this.checkoutForm).subscribe(data => {
+        this.customer = data;
         this.customerId = data.id;
       })
       this.service.createReservation(this.reservation).subscribe(data => {
