@@ -39,7 +39,7 @@
     border-radius: 4px;
     border: 1px solid #D7D8D8;
     background-color: #fff;
-    border-bottom: 6px solid #FFCC00;
+    border-bottom: 6px solid #0E67B4;
     margin: 15px;
     position: relative;
 }
@@ -64,9 +64,9 @@ button {
     min-height: 65px;
     font-size: 18px!important;
     border-radius: 5px;
-    color: #000;
-    background-color: #fc0;
-    border: 2px solid #fc0;
+    color: #fff;
+    background-color: #0E67B4;
+    border: 2px solid #0E67B4;
     cursor: pointer;
 }
 .select-btn:hover{

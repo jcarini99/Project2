@@ -43,3 +43,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+car-reservation/target/classes/META-INF/maven/com.example/car-reservation/pom.properties
