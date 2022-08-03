@@ -24,56 +24,48 @@ import com.cars.services.ReservationService;
 @CrossOrigin(origins = "*")
 @RequestMapping("/reservations")
 public class ReservationController {
-	
-	@Autowired 
-	private ReservationService reservationService;
-	
-	
+
+    @Autowired
+    private ReservationService reservationService;
+
     // Read operations
-    @GetMapping 
-    public List<Reservation> fetchReservationList()
-    {
+    @GetMapping
+    public List<Reservation> fetchReservationList() {
         return reservationService.fetchReservationList();
     }
-	
+
     @GetMapping("/{id}")
     public Reservation fetchReservationById(@PathVariable int id) {
-    	return reservationService.fetchReservationById(id);
+        return reservationService.fetchReservationById(id);
     }
-    
+
     @GetMapping("/{id}/{customerId}")
     public Reservation fetchReservationByIdAndCustomerId(@PathVariable int id, @PathVariable int customerId) {
-    	return reservationService.fetchReservationByIdAndCustomerId(id, customerId);
+        return reservationService.fetchReservationByIdAndCustomerId(id, customerId);
     }
-    
-    // Save operation
-    @PostMapping 
-    public ResponseEntity<Reservation> saveReservation(@Valid @RequestBody Reservation reservation)
-    {
-    	if (reservationService.validateAvailReservation(reservation.getStart(), reservation.getEnd(), reservation.getCar().getId()) == null)
-    		return reservationService.saveReservation(reservation);
-    	else
-    		return null;
-    }
- 
 
- 
-    // Update operation
-    @PutMapping("/{id}") 
-    public Reservation
-    updateReservation(@RequestBody Reservation reservation,
-                     @PathVariable("id") int reservationId)
-    {
-        return reservationService.updateReservation(
-            reservation, reservationId);
+    // Save operation
+    @PostMapping
+    public Reservation saveReservation(@Valid @RequestBody Reservation reservation) {
+        if (reservationService.validateAvailReservation(reservation.getStart(), reservation.getEnd(),
+                reservation.getCar().getId()) == null)
+            return reservationService.saveReservation(reservation);
+        else
+            return null;
     }
- 
+
+    // Update operation
+    @PutMapping("/{id}")
+    public Reservation updateReservation(@RequestBody Reservation reservation,
+            @PathVariable("id") int reservationId) {
+        return reservationService.updateReservation(
+                reservation, reservationId);
+    }
+
     // Delete operation
-    @DeleteMapping("/{id}") 
-    public String deleteReservationById(@PathVariable("id")
-                                       int reservationId)
-    {
-    	reservationService.deleteReservationById(reservationId);
+    @DeleteMapping("/{id}")
+    public String deleteReservationById(@PathVariable("id") int reservationId) {
+        reservationService.deleteReservationById(reservationId);
         return "Deleted Successfully";
     }
 
