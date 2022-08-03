@@ -58,8 +58,12 @@ public class ReservationController {
     @PutMapping("/{id}")
     public Reservation updateReservation(@RequestBody Reservation reservation,
             @PathVariable("id") int reservationId) {
-        return reservationService.updateReservation(
+    	if (reservationService.validateAvailUpdate(reservation.getStart(), reservation.getEnd(),
+                reservation.getCar().getId(), reservation.getId()) != null)
+    		return reservationService.updateReservation(
                 reservation, reservationId);
+    	else 
+    		return null;
     }
 
     // Delete operation
