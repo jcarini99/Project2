@@ -7,19 +7,25 @@
                     <h4>Driver Details</h4>
                 </div>
                 <div class="customer-form">
-                    <form class="example-form">
+                    <form [formGroup]="checkoutForm" class="example-form" name="customer-form" (ngSubmit)="submit()" id="customer-form">
                         <table class="example-full-width" cellspacing="0">
                             <tr>
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>First name</mat-label>
-                                        <input matInput>
+                                        <input formControlName="firstName" matInput name="first-name">
+                                        <mat-error *ngIf="checkoutForm.get('firstName')?.hasError('required')"> Please enter a valid First Name </mat-error>
+                                        <mat-error *ngIf="checkoutForm.get('firstName')?.hasError('pattern')"> Please enter a valid First Name </mat-error>
                                     </mat-form-field>
                                 </td>
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Last Name</mat-label>
-                                        <input matInput>
+                                        <input matInput formControlName="lastName" name="last-name">
+                                        <mat-error *ngIf="checkoutForm.get('lastName')?.hasError('required')"> Please enter a valid Last Name </mat-error>
+                                        <mat-error *ngIf="checkoutForm.get('lastName')?.hasError('pattern')"> Please enter a valid Last Name </mat-error>
+                                        <mat-error *ngIf="checkoutForm.get('lastName')?.hasError('minLength')"> Please enter a valid Last Name </mat-error>
+
                                     </mat-form-field>
                                 </td>
                             </tr>
@@ -30,15 +36,9 @@
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Email</mat-label>
-                                        <input type="email" matInput emailFormControl [errorStateMatcher]="matcher"
-                                            placeholder="Ex. pat@example.com">
-                                        <mat-error
-                                            *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                                            Please enter a valid email address
-                                        </mat-error>
-                                        <mat-error *ngIf="emailFormControl.hasError('required')">
-                                            Email is <strong>required</strong>
-                                        </mat-error>
+                                        <input matInput placeholder="Ex. pat@example.com" formControlName="email" name="email">
+                                        <mat-error *ngIf="checkoutForm.get('email')?.hasError('required')"> Please enter a valid email address </mat-error>
+                                        <mat-error *ngIf="checkoutForm.get('email')?.hasError('email')"> Please enter a valid email address </mat-error>
                                     </mat-form-field>
                                 </td>
                             </tr>
@@ -48,15 +48,8 @@
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Verify Email</mat-label>
-                                        <input type="email" matInput emailFormControl [errorStateMatcher]="matcher"
-                                            placeholder="Ex. pat@example.com">
-                                        <mat-error
-                                            *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                                            Please enter a valid email address
-                                        </mat-error>
-                                        <mat-error *ngIf="emailFormControl.hasError('required')">
-                                            Email is <strong>required</strong>
-                                        </mat-error>
+                                        <input matInput placeholder="Ex. pat@example.com" formControlName="email2" name="email2" pattern="{{checkoutForm.value.email}}">
+                                        <mat-error *ngIf="!checkoutForm.get('email2')?.hasError('email2')">Email does not match.</mat-error>
                                     </mat-form-field>
                                 </td>
                             </tr>
@@ -67,14 +60,26 @@
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Phone Number</mat-label>
-                                        <input matInput>
+                                        <input matInput formControlName="phoneNumber" name="phoneNumber">
+                                        <mat-error *ngIf="checkoutForm.get('phoneNumber')?.hasError('required')"> Please enter a valid phone number </mat-error>
+                                        <mat-error *ngIf="checkoutForm.get('phoneNumber')?.hasError('pattern')"> Please enter a valid phone number </mat-error>
                                     </mat-form-field>
                                 </td>
                                 <td>
+
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Dob</mat-label>
-                                        <input matInput>
+                                        <input matInput [matDatepicker]="picker" (dateInput)="updateDate($event.value)" formControlName="dateOfBirth">
+                                        <mat-error *ngIf="checkoutForm.get('dateOfBirth')?.hasError('required')"> Must Enter Valid DOB </mat-error>
+                                        <mat-error *ngIf="!checkoutForm.get('dateOfBirth')?.hasError('isValidDob')">Must be 18 or older.</mat-error>
+                                        
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+
+                                        
                                     </mat-form-field>
+
+                                    
                                 </td>
                             </tr>
                         </table>
@@ -101,7 +106,7 @@
                 <div class="reserved-vehicle">
                     <div class="vehicle-img-container"><img class="vehicle-img"
                             src="https://dutcheauction.com/images/default-car.png" alt=""></div>
-                    <div class="vehicle-header">{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}</div>
+                   <!-- <div class="vehicle-header">{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}</div>-->
                 </div>
             </div>
             <div class="price-container">
@@ -115,7 +120,7 @@
                         <p class="total">400.00 USD</p>
                     </div>
                     <div class="rate-details"></div>
-                    <button class="select-btn" (click)="submit($event)">Reserve</button>
+                    <button class="select-btn" form="customer-form" type="submit">Reserve</button>
                 </div>
             </div>
         </div>
