@@ -36,7 +36,6 @@ export class VehicleListComponent implements OnInit {
       this.onReady(this.callback)
     }
     this.service.reservation = null;
-    this.service.chosenVehicle = null;
   }
   onReady(callback :Function) :void {
     var intervalId = window.setInterval(function() {

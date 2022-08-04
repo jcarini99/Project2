@@ -23,8 +23,6 @@ export class HomeContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.reservation = null;
-    this.service.reservationTimes = null;
-    this.service.chosenVehicle = null;
   }
   updateDateStart(e :any) :void {
     this.dateStart = new Date(e);

@@ -17,6 +17,8 @@ export class ReviewComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.service.reservationTimes = null;
+    this.service.chosenVehicle = null;
   }
 
 }
