@@ -1,1 +1,124 @@
-<p>review works!</p>
+<div class="customer-checkout">
+    <div class="customer-checkout-container">
+        <h1 class="checkout-header">View, Edit, or Cancel Reservation</h1>
+        <div class="checkout-container">
+            <div class="customer-form-container">
+                <div class="form-header">
+                    <h4>Reservation Details</h4>
+                </div>
+                <div class="customer-form">
+                    <form [formGroup]="checkoutForm" class="example-form" name="customer-form" (ngSubmit)="submit()" id="customer-form">
+                        <table class="example-full-width" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>First name</mat-label>
+                                        <input formControlName="firstName" matInput name="first-name" > <!-- disable this -->
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Last Name</mat-label>
+                                        <input matInput formControlName="lastName" name="last-name"> <!-- disable this -->
+
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="example-full-width" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput placeholder="Ex. pat@example.com" formControlName="email" name="email" > <!-- disable this -->
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="example-full-width" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Phone Number</mat-label>
+                                        <input matInput formControlName="phoneNumber" name="phoneNumber"> <!-- disable this -->
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Dob</mat-label>
+                                        <input matInput [matDatepicker]="picker" (dateInput)="updateDate($event.value)" formControlName="dateOfBirth" > <!-- disable this -->
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="example-full-width" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Choose a date</mat-label>
+                                        <input matInput [matDatepicker]="picker" [min]="today" (dateInput)="updateDateStart($event.value)" required>
+                                        <mat-hint>MM/DD/YYYY</mat-hint>
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Choose a date</mat-label>
+                                        <input matInput [matDatepicker]="picker1" [min]="today" (dateInput)="updateDateEnd($event.value)" required>
+                                        <mat-hint>MM/DD/YYYY</mat-hint>
+                                        <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1 ></mat-datepicker>                                        
+                                    </mat-form-field>                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="reservation-container">
+                <div class="reservation-times">
+                    <div class="left-side">
+                        <div class="pickup">
+                            <div class="type">Pick-up</div>
+                            <div class="location"></div>
+                            <div class="date"> {{dateStart}}</div>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="dropoff">
+                            <div class="type">Drop-off</div>
+                            <div class="location"></div>
+                            <div class="date">{{dateEnd}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reserved-vehicle">
+                    <div class="vehicle-header">{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}</div>
+                    <div class="vehicle-img-container"><img class="vehicle-img"
+                            src="../../assets/images/default-car.png" alt=""></div>
+                    
+                </div>
+            </div>
+            
+                <div class="price-info">
+                    <div class="price-header">
+                        <h2 class="total-label">Est. Total</h2>
+                        <h2 class="total">400.00 USD</h2>
+                    </div>
+                    <div class="price-pickup">
+                        <p class="total-label">Charged At Pickup</p>
+                        <p class="total">400.00 USD</p>
+                    </div>
+                    <div class="rate-details"></div>
+                    <button class="select-btn" form="customer-form" type="submit">Update Reservation</button>
+                    <button class="select-btn" form="customer-form" type="submit">Delete Reservation</button>
+                </div>
+
+        </div>
+    </div>
+</div>
