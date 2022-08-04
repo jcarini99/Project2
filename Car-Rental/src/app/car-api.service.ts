@@ -10,28 +10,34 @@ export class CarApiService {
 
   reservationTimes :any = {dateStart: null,
                           dateEnd: null};
-                          
   chosenVehicle :any = {id: null,
                         make: null,
                         model: null,
                         year: null,
                         tier: null}; 
+<<<<<<< Updated upstream
 
-  reservation :any = null
-  
-
-  
+=======
+  chosenReservation :any = {reservationId: null,
+                            customerId: null}
+>>>>>>> Stashed changes
 
   http :HttpClient;
 
   constructor(http :HttpClient) { 
     this.http = http;
   }
+<<<<<<< Updated upstream
+
+  findAllAvailableCars() :Observable<any> {
+    return this.http.get(environment.apiUrl + 'cars/available/?dateStart=' + this.reservationTimes.dateStart + '&dateEnd=' + this.reservationTimes.dateEnd);
+  }
+=======
   createReservation(reservation :any) :Observable<any>{
-    return this.http.post(environment.apiUrl +'reservations', reservation)
+    return this.http.post(environment.apiUrl +'reservations', reservation);
   }
   createCustomer(customer :any) :Observable<any> {
-    return this.http.post(environment.apiUrl + 'customers/', customer)
+    return this.http.post(environment.apiUrl + 'customers/', customer);
   }
   findAllAvailableCars() :Observable<any> {
     return this.http.get(environment.apiUrl + 'cars/available/?dateStart=' + this.reservationTimes.dateStart + '&dateEnd=' + this.reservationTimes.dateEnd);
@@ -44,4 +50,16 @@ export class CarApiService {
     return this.http.get(environment.apiUrl + 'reservations/' + id)
   }
   */
+  findReservationByIdAndCustomerId(id :number, customerId :number) :Observable<any>{
+    return this.http.get(environment.apiUrl + 'reservations/' + id + '/' + customerId);
+  }
+
+  updateReservation(reservation :any) :Observable<any> {
+    return this.http.put(environment.apiUrl + 'reservations', reservation);
+  }
+
+  deleteReservation(reservation :any):Observable<any> {
+    return this.http.delete(environment.apiUrl + 'reservations/' + this.chosenReservation.id)
+  }
+>>>>>>> Stashed changes
 }
