@@ -22,6 +22,12 @@ export class CarApiService {
                             customerId: null}
 >>>>>>> Stashed changes
 
+<<<<<<< Updated upstream
+=======
+  chosenCustomer :any 
+  
+  reservation :any = null;
+>>>>>>> Stashed changes
   http :HttpClient;
 
   constructor(http :HttpClient) { 
@@ -41,6 +47,10 @@ export class CarApiService {
   }
   findAllAvailableCars() :Observable<any> {
     return this.http.get(environment.apiUrl + 'cars/available/?dateStart=' + this.reservationTimes.dateStart + '&dateEnd=' + this.reservationTimes.dateEnd);
+  }
+
+  findCustomerById(id :number) :Observable<any>{
+    return this.http.get(environment.apiUrl + 'customers/' + id)
   }
   /*
   findReservation(id :number, lname :string) :Observable<any> {

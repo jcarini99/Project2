@@ -56,6 +56,59 @@ export class CustomerFormComponent implements OnInit {
       this.vehicleTier = this.service.chosenVehicle.tier;
       this.dateStart = this.service.reservationTimes.dateStart;
       this.dateEnd = this.service.reservationTimes.dateEnd;
+<<<<<<< Updated upstream
+=======
+      this.alterDate(this.dateStart, this.dateEnd);
+    }
+    this.service.reservation = null;
+  }
+
+  submit(): void {
+    if (this.checkoutForm.invalid) {
+      console.log("got here")
+      return;
+    }
+    else {
+      let dob = this.checkoutForm.controls['dateOfBirth'].value;
+      let dateob = new Date(String(dob));
+      let date = dateob.getFullYear() + "-" + (dateob.getMonth() + 1) + "-" + dateob.getDate();
+      this.customerObject = {
+        firstName:this.checkoutForm.controls['firstName'].value,
+        lastName:this.checkoutForm.controls['lastName'].value,
+        email:this.checkoutForm.controls['email'].value,
+        phoneNumber: this.checkoutForm.controls['phoneNumber'].value,
+        dateOfBirth: date,
+      }
+      console.log("checkout form value", this.customerObject)
+      this.service.createCustomer(this.customerObject).subscribe(data => {
+        this.customer = data;
+        this.customerId = data.id;
+        /* Creating a reservation object with the car, customer, start, and end properties. */
+      this.reservationObject = {
+
+        car: {
+          id: this.service.chosenVehicle.id,
+          make: this.service.chosenVehicle.make,
+          model: this.service.chosenVehicle.model,
+          year: this.service.chosenVehicle.year,
+          tier: this.service.chosenVehicle.tier,
+        },
+        customer: {
+          id: this.customerId,
+        },
+        start: this.service.reservationTimes.dateStart,
+        end: this.service.reservationTimes.dateEnd,
+      }
+        this.service.createReservation(this.reservationObject).subscribe(data => {
+          console.log("data",data)
+          this.service.reservation = data;
+
+          this.service.reservationTimes = null;
+          this.service.chosenVehicle = null;
+          this.router.navigateByUrl('/review')
+        })
+      })
+>>>>>>> Stashed changes
     }
   }
 

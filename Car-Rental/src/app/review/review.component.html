@@ -1,25 +1,25 @@
 <div class="customer-checkout">
     <div class="customer-checkout-container">
         <h1 class="checkout-header">View, Edit, or Cancel Reservation</h1>
-        <div class="checkout-container">
+        <div class="review-container">
             <div class="customer-form-container">
                 <div class="form-header">
                     <h4>Reservation Details</h4>
                 </div>
                 <div class="customer-form">
-                    <form [formGroup]="checkoutForm" class="example-form" name="customer-form" (ngSubmit)="submit()" id="customer-form">
+                    <form class="example-form" name="customer-form" id="customer-form">
                         <table class="example-full-width" cellspacing="0">
                             <tr>
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>First name</mat-label>
-                                        <input formControlName="firstName" matInput name="first-name" > <!-- disable this -->
+                                        <input  matInput name="first-name" [(ngModel)]="whatever.firstName" disabled> 
                                     </mat-form-field>
                                 </td>
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Last Name</mat-label>
-                                        <input matInput formControlName="lastName" name="last-name"> <!-- disable this -->
+                                        <input matInput  name="last-name" [(ngModel)]="whatever.lastName" disabled> 
 
                                     </mat-form-field>
                                 </td>
@@ -31,7 +31,11 @@
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Email</mat-label>
+<<<<<<< Updated upstream
                                         <input matInput placeholder="Ex. pat@example.com" formControlName="email" name="email"> <!-- disable this -->
+=======
+                                        <input matInput name="email" [(ngModel)]="whatever.email" disabled>
+>>>>>>> Stashed changes
                                     </mat-form-field>
                                 </td>
                             </tr>
@@ -42,14 +46,19 @@
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Phone Number</mat-label>
+<<<<<<< Updated upstream
                                         <input matInput formControlName="phoneNumber" name="phoneNumber">
                                         <mat-error *ngIf="checkoutForm.get('phoneNumber')?.hasError('required')"> Please enter a valid phone number </mat-error>
                                         <mat-error *ngIf="checkoutForm.get('phoneNumber')?.hasError('pattern')"> Please enter a valid phone number </mat-error>
+=======
+                                        <input matInput name="phoneNumber" [(ngModel)]="whatever.phoneNumber" disabled>
+>>>>>>> Stashed changes
                                     </mat-form-field>
                                 </td>
                                 <td>
 
                                     <mat-form-field class="example-full-width" appearance="fill">
+<<<<<<< Updated upstream
                                         <mat-label>Dob</mat-label>
                                         <input matInput [matDatepicker]="picker" (dateInput)="updateDate($event.value)" formControlName="dateOfBirth">
                                         <mat-error *ngIf="checkoutForm.get('dateOfBirth')?.hasError('required')"> Must Enter Valid DOB </mat-error>
@@ -59,6 +68,10 @@
                                         <mat-datepicker #picker></mat-datepicker>
 
                                         
+=======
+                                        <mat-label>Date of Birth</mat-label>
+                                        <input matInput name = "dateOfBirth" [(ngModel)]="whatever.dateOfBirth" disabled> 
+>>>>>>> Stashed changes
                                     </mat-form-field>
 
                                     
@@ -111,7 +124,7 @@
                     </div>
                 </div>
                 <div class="reserved-vehicle">
-                    <div class="vehicle-header">{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}</div>
+                    <div class="vehicle-header">{{reservation.car.make}} {{reservation.car.model}} {{reservation.car.year}}</div>
                     <div class="vehicle-img-container"><img class="vehicle-img"
                             src="https://dutcheauction.com/images/default-car.png" alt=""></div>
                     
@@ -128,7 +141,13 @@
                         <p class="total">400.00 USD</p>
                     </div>
                     <div class="rate-details"></div>
+<<<<<<< Updated upstream
                     <button class="select-btn" form="customer-form" type="submit">Reserve</button>
+=======
+                    <div class="button-space"><button class="select-btn" form="customer-form" type="submit">Update Reservation</button></div>
+                    <div class="button-space"><button class="delete-btn" form="customer-form" type="submit">Delete Reservation</button></div>
+                    
+>>>>>>> Stashed changes
                 </div>
 
         </div>

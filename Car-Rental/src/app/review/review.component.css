@@ -136,6 +136,19 @@ button {
     color: #fff;
     background-color: #0E67B4;
     border: 2px solid #0E67B4;
+<<<<<<< Updated upstream
+=======
+    cursor: pointer;
+}
+.delete-btn{
+    min-width: 165px;
+    min-height: 65px;
+    font-size: 18px!important;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #e00404;
+    border: 2px solid #e00404;
+>>>>>>> Stashed changes
     cursor: pointer;
 }
 .select-btn:hover{
@@ -143,4 +156,9 @@ button {
 }
 .checkout-header{
     margin: 0 0 0 20px;
+}
+
+.button-space{
+    margin: 1 1 1 1px;
+    border: 2 px;
 }
