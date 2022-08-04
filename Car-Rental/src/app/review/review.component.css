@@ -134,8 +134,8 @@ button {
     font-size: 18px!important;
     border-radius: 5px;
     color: #fff;
-    background-color: #0E67B4;
-    border: 2px solid #0E67B4;
+    background-color: #e00404;
+    border: 2px solid #e00404;
     cursor: pointer;
 }
 .select-btn:hover{
