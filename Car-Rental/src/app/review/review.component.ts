@@ -23,7 +23,9 @@ export class ReviewComponent implements OnInit {
   dateEnd: any;
   vehicle: any;
   vehicleId: any;
-  reservation: any = {make: "", model: "", year:""}
+  reservation: any = {
+    car:{make: "", model: "", year:""}
+  }
   reservationObject: any = {}
   customerObject: any = {}
   customer: Array<any> = [];
@@ -34,6 +36,7 @@ export class ReviewComponent implements OnInit {
   dateOfBirth: any;
   resUpdate:any = {};
   customerArray:any ={};
+  
 
 
   constructor(service: CarApiService, private router: Router, public datepipe: DatePipe) {
@@ -52,18 +55,22 @@ export class ReviewComponent implements OnInit {
     }else{
       console.log("chosenReservation",this.service.chosenReservation);
       this.service.findReservationByIdAndCustomerId(this.service.chosenReservation.reservationId, this.service.chosenReservation.customerId).subscribe(data => {
+        console.log("data", data)
       this.reservation = data;
-      this.service.findCustomerById(this.reservation.customer).subscribe(custData => {
+      this.reservation.customer = {id: data.customer};
+      let start = new Date(this.reservation.start)
+      this.dateStart = this.datepipe.transform(start, 'MM-dd-yyyy');
+      let end = new Date(this.reservation.end)
+      this.dateEnd = this.datepipe.transform(end, 'MM-dd-yyyy')
+
+      this.service.findCustomerById(this.reservation.customer.id).subscribe(custData => {
         this.service.chosenCustomer = custData; 
         this.customerArray = this.service.chosenCustomer;
         console.log("chosenCustomerNew", this.service.chosenCustomer);
         });
       console.log("reservationData", data);
       console.log("reservation", this.reservation);
-      let start = new Date(this.reservation.start)
-      this.dateStart = this.datepipe.transform(start, 'MM-dd-yyyy');
-      let end = new Date(this.reservation.end)
-      this.dateEnd = this.datepipe.transform(end, 'MM-dd-yyyy')
+
       })
     }
     
@@ -127,7 +134,7 @@ export class ReviewComponent implements OnInit {
   }
 
   deleteReservation(id :number){
-    this.service.deleteReservation(id).subscribe(() => {});
+    this.service.deleteReservation(id).subscribe(data => {});
     this.router.navigateByUrl('/home')
 
   }

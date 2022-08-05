@@ -67,6 +67,7 @@ public class ReservationController {
     @PutMapping("/{id}")
     public Reservation updateReservation(@RequestBody Reservation reservation,
             @PathVariable("id") int reservationId) {
+    	System.out.println("reservation" + reservation);
     	if (reservationService.validateAvailUpdate(reservation.getStart(), reservation.getEnd(),
                 reservation.getCar().getId(), reservation.getId()).isEmpty())
     		return reservationService.updateReservation(
