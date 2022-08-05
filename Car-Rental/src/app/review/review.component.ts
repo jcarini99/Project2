@@ -62,14 +62,8 @@ export class ReviewComponent implements OnInit {
 
   constructor(service: CarApiService, private router: Router) {
     this.service = service;
-
-<<<<<<< HEAD
-  ngOnInit(): void {
-    this.service.reservationTimes = null;
-    this.service.chosenVehicle = null;
-=======
->>>>>>> Yevgeniy
   }
+
 
   /* ngOnInit(): void {
     if (this.service.reservationTimes.dateStart == null || this.service.reservationTimes.dateEnd == null) {
