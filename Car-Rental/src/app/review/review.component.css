@@ -95,8 +95,8 @@ td {
     align-items: center;
     margin: 0 20px;
 }
-.customer-checkout .customer-checkout-container .review-container .price-info{
-}
+/* .customer-checkout .customer-checkout-container .review-container .price-info{
+} */
 .customer-checkout .customer-checkout-container .review-container .price-header{
     display: flex;
     align-items: center;

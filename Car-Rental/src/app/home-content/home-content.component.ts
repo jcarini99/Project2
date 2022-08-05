@@ -18,6 +18,7 @@ export class HomeContentComponent implements OnInit {
   reservationId :any;
   customerId :any;
   VEC :boolean = false;
+  validReservation :any;
 
 
   constructor(service :CarApiService, private router: Router) {
@@ -66,13 +67,15 @@ export class HomeContentComponent implements OnInit {
   }
 
   reservationCheck() :Boolean{
-    let reservation = this.service.findReservationByIdAndCustomerId(this.reservationId,this.customerId);
-    if(reservation != null){
+    this.service.findReservationByIdAndCustomerId(this.reservationId,this.customerId).subscribe(data => {
+      this.validReservation = data;
+    
+    })
+    if(this.validReservation != null){
       return true;
-    } else {
+    } else { 
       return false;
     }
-    
   }
 
   ViewEditCancel(){
