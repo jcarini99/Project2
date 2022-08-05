@@ -129,7 +129,17 @@ button {
     line-height: 1.625;
 }
 .select-btn{
-    min-width: 165px;
+    min-width: 203px;
+    min-height: 65px;
+    font-size: 18px!important;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #0E67B4;
+    border: 2px solid #0E67B4;
+    cursor: pointer;
+}
+.delete-btn{
+    min-width: 203px;
     min-height: 65px;
     font-size: 18px!important;
     border-radius: 5px;
@@ -143,4 +153,9 @@ button {
 }
 .checkout-header{
     margin: 0 0 0 20px;
+}
+
+.button-space{
+    margin: 1 1 1 1px;
+    border: 2 px;
 }
