@@ -49,18 +49,17 @@ public class ReservationServiceImpl implements ReservationService{
 	@Override
 	public Reservation updateReservation(Reservation reservation, int reservationId) {
 		
-        Reservation resDB
-        = reservationRepository.findById(reservationId).get();
+        Reservation resDB = reservationRepository.findById(reservationId).get();
+                
         
-        if (reservation == resDB) {
+        if (reservationId == resDB.getId()) {
         	
         	resDB.setCar(reservation.getCar());
-        	resDB.setCustomer(reservation.getCustomer());
         	resDB.setStart(reservation.getStart());
         	resDB.setEnd(reservation.getEnd());
-        	resDB.setCar(reservation.getCar());
+        	
         }
-
+        
         return reservationRepository.save(resDB);
 	}
 
