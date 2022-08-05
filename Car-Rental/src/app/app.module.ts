@@ -49,6 +49,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReserveComponent } from './reserve/reserve.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReviewComponent } from './review/review.component';
+import { DatePipe } from '@angular/common'
 
 @NgModule({
   declarations: [
@@ -102,9 +103,10 @@ import { ReviewComponent } from './review/review.component';
     MatTooltipModule,
     MatTreeModule,
     ReactiveFormsModule,
+    DatePipe
     
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

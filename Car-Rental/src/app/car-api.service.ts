@@ -57,10 +57,11 @@ export class CarApiService {
   }
 
   updateReservation(reservation :any) :Observable<any> {
-    return this.http.put(environment.apiUrl + 'reservations', reservation);
+    return this.http.put(environment.apiUrl + 'reservations/' + reservation.id, reservation);
   }
 
-  deleteReservation(reservation :any):Observable<any> {
-    return this.http.delete(environment.apiUrl + 'reservations/' + this.chosenReservation.id)
+  deleteReservation(reservation :number) :Observable<any> {
+    console.log("reservationIdService", reservation)
+    return this.http.delete(environment.apiUrl + 'reservations/' + reservation)
   }
 }
