@@ -84,11 +84,17 @@ export class HomeContentComponent implements OnInit {
   
   // Check if Reservation ID and Customer ID are linked to any reservation and redirect to the checkout page for View / Edit / Cancel
   VECsubmit() :void{
-    let validInput = this.reservationCheck();
-    if (validInput){
-      this.service.chosenReservation={reservationId :this.reservationId,
-                                      customerId: this.customerId}
-      this.router.navigateByUrl('/review')
-    }
+    this.service.findReservationByIdAndCustomerId(this.reservationId,this.customerId).subscribe(data => {
+      this.validReservation = data;
+      if (this.validReservation)
+      {
+        this.service.chosenReservation={reservationId :this.reservationId,
+          customerId: this.customerId}
+        this.router.navigateByUrl('/review')
+      }
+      else{
+
+      }
+    })
   }
 }
