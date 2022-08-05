@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cars.models.Reservation;
@@ -48,18 +49,26 @@ public class ReservationController {
     @PostMapping
     public Reservation saveReservation(@Valid @RequestBody Reservation reservation) {
         if (reservationService.validateAvailReservation(reservation.getStart(), reservation.getEnd(),
-                reservation.getCar().getId()) != null)
+                reservation.getCar().getId()).isEmpty())
             return reservationService.saveReservation(reservation);
         else
             return null;
     }
+    
+    //Validate operation
+    @GetMapping("/validate")
+    public List<Reservation> fetchReservationList(@RequestParam(name = "dateStart") String dateStart, @RequestParam(name = "dateEnd") String dateEnd, 
+    		@RequestParam(name = "carId") int carId) {
+        return reservationService.fetchReservationList();
+    }
+    
 
     // Update operation
     @PutMapping("/{id}")
     public Reservation updateReservation(@RequestBody Reservation reservation,
             @PathVariable("id") int reservationId) {
     	if (reservationService.validateAvailUpdate(reservation.getStart(), reservation.getEnd(),
-                reservation.getCar().getId(), reservation.getId()) != null)
+                reservation.getCar().getId(), reservation.getId()).isEmpty())
     		return reservationService.updateReservation(
                 reservation, reservationId);
     	else 

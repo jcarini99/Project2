@@ -8,35 +8,38 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CarApiService {
 
-  reservationTimes :any = {dateStart: null,
-                          dateEnd: null};
+  reservationTimes :any = null;
+  
+  chosenVehicle :any = null;
+
+  chosenReservation :any = {reservationId: null,
+                            customerId: null};
+
                           
-  chosenVehicle :any = {id: null,
-                        make: null,
-                        model: null,
-                        year: null,
-                        tier: null}; 
 
-  reservation :any = null
+  chosenCustomer :any                          
 
-  
-  
 
-  
-
+  reservation :any = null;
   http :HttpClient;
 
   constructor(http :HttpClient) { 
     this.http = http;
   }
+
+
   createReservation(reservation :any) :Observable<any>{
-    return this.http.post(environment.apiUrl +'reservations', reservation)
+    return this.http.post(environment.apiUrl +'reservations', reservation);
   }
   createCustomer(customer :any) :Observable<any> {
-    return this.http.post(environment.apiUrl + 'customers/', customer)
+    return this.http.post(environment.apiUrl + 'customers/', customer);
   }
   findAllAvailableCars() :Observable<any> {
     return this.http.get(environment.apiUrl + 'cars/available/?dateStart=' + this.reservationTimes.dateStart + '&dateEnd=' + this.reservationTimes.dateEnd);
+  }
+
+  findCustomerById(id :number) :Observable<any>{
+    return this.http.get(environment.apiUrl + 'customers/' + id)
   }
   /*
   findReservation(id :number, lname :string) :Observable<any> {
@@ -46,4 +49,15 @@ export class CarApiService {
     return this.http.get(environment.apiUrl + 'reservations/' + id)
   }
   */
+  findReservationByIdAndCustomerId(id :number, customerId :number) :Observable<any>{
+    return this.http.get(environment.apiUrl + 'reservations/' + id + '/' + customerId);
+  }
+
+  updateReservation(reservation :any) :Observable<any> {
+    return this.http.put(environment.apiUrl + 'reservations', reservation);
+  }
+
+  deleteReservation(reservation :any):Observable<any> {
+    return this.http.delete(environment.apiUrl + 'reservations/' + this.chosenReservation.id)
+  }
 }
