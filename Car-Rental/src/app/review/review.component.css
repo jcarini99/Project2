@@ -95,8 +95,8 @@ td {
     align-items: center;
     margin: 0 20px;
 }
-.customer-checkout .customer-checkout-container .review-container .price-info{
-}
+/* .customer-checkout .customer-checkout-container .review-container .price-info{
+} */
 .customer-checkout .customer-checkout-container .review-container .price-header{
     display: flex;
     align-items: center;
@@ -136,8 +136,6 @@ button {
     color: #fff;
     background-color: #0E67B4;
     border: 2px solid #0E67B4;
-<<<<<<< Updated upstream
-=======
     cursor: pointer;
 }
 .delete-btn{
@@ -148,7 +146,6 @@ button {
     color: #fff;
     background-color: #e00404;
     border: 2px solid #e00404;
->>>>>>> Stashed changes
     cursor: pointer;
 }
 .select-btn:hover{

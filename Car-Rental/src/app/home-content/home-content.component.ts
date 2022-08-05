@@ -73,7 +73,7 @@ export class HomeContentComponent implements OnInit {
       })
       
       return true;
-    } else {
+    } else { 
       return false;
     }
     

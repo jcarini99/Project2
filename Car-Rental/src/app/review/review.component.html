@@ -31,11 +31,7 @@
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Email</mat-label>
-<<<<<<< Updated upstream
-                                        <input matInput placeholder="Ex. pat@example.com" formControlName="email" name="email"> <!-- disable this -->
-=======
                                         <input matInput name="email" [(ngModel)]="whatever.email" disabled>
->>>>>>> Stashed changes
                                     </mat-form-field>
                                 </td>
                             </tr>
@@ -46,35 +42,14 @@
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Phone Number</mat-label>
-<<<<<<< Updated upstream
-                                        <input matInput formControlName="phoneNumber" name="phoneNumber">
-                                        <mat-error *ngIf="checkoutForm.get('phoneNumber')?.hasError('required')"> Please enter a valid phone number </mat-error>
-                                        <mat-error *ngIf="checkoutForm.get('phoneNumber')?.hasError('pattern')"> Please enter a valid phone number </mat-error>
-=======
                                         <input matInput name="phoneNumber" [(ngModel)]="whatever.phoneNumber" disabled>
->>>>>>> Stashed changes
                                     </mat-form-field>
                                 </td>
                                 <td>
-
                                     <mat-form-field class="example-full-width" appearance="fill">
-<<<<<<< Updated upstream
-                                        <mat-label>Dob</mat-label>
-                                        <input matInput [matDatepicker]="picker" (dateInput)="updateDate($event.value)" formControlName="dateOfBirth">
-                                        <mat-error *ngIf="checkoutForm.get('dateOfBirth')?.hasError('required')"> Must Enter Valid DOB </mat-error>
-                                        <mat-error *ngIf="!checkoutForm.get('dateOfBirth')?.hasError('isValidDob')">Must be 18 or older.</mat-error>
-                                        
-                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker></mat-datepicker>
-
-                                        
-=======
                                         <mat-label>Date of Birth</mat-label>
-                                        <input matInput name = "dateOfBirth" [(ngModel)]="whatever.dateOfBirth" disabled> 
->>>>>>> Stashed changes
+                                        <input matInput name = "dateOfBirth" [(ngModel)]="whatever.dateOfBirth" disabled>
                                     </mat-form-field>
-
-                                    
                                 </td>
                             </tr>
                         </table>
@@ -90,16 +65,13 @@
                                     </mat-form-field>
                                 </td>
                                 <td>
-
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Choose a date</mat-label>
                                         <input matInput [matDatepicker]="picker1" [min]="today" (dateInput)="updateDateEnd($event.value)" required>
                                         <mat-hint>MM/DD/YYYY</mat-hint>
                                         <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
                                         <mat-datepicker #picker1 ></mat-datepicker>                                        
-                                    </mat-form-field>
-
-                                    
+                                    </mat-form-field>                                    
                                 </td>
                             </tr>
                         </table>
@@ -126,7 +98,7 @@
                 <div class="reserved-vehicle">
                     <div class="vehicle-header">{{reservation.car.make}} {{reservation.car.model}} {{reservation.car.year}}</div>
                     <div class="vehicle-img-container"><img class="vehicle-img"
-                            src="https://dutcheauction.com/images/default-car.png" alt=""></div>
+                            src="../../assets/images/default-car.png" alt=""></div>
                     
                 </div>
             </div>
@@ -141,13 +113,8 @@
                         <p class="total">400.00 USD</p>
                     </div>
                     <div class="rate-details"></div>
-<<<<<<< Updated upstream
-                    <button class="select-btn" form="customer-form" type="submit">Reserve</button>
-=======
                     <div class="button-space"><button class="select-btn" form="customer-form" type="submit">Update Reservation</button></div>
                     <div class="button-space"><button class="delete-btn" form="customer-form" type="submit">Delete Reservation</button></div>
-                    
->>>>>>> Stashed changes
                 </div>
 
         </div>

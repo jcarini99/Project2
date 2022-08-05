@@ -15,30 +15,18 @@ export class CarApiService {
                         model: null,
                         year: null,
                         tier: null}; 
-<<<<<<< Updated upstream
-
-=======
   chosenReservation :any = {reservationId: null,
                             customerId: null}
->>>>>>> Stashed changes
 
-<<<<<<< Updated upstream
-=======
   chosenCustomer :any 
-  
   reservation :any = null;
->>>>>>> Stashed changes
   http :HttpClient;
 
   constructor(http :HttpClient) { 
     this.http = http;
   }
-<<<<<<< Updated upstream
 
-  findAllAvailableCars() :Observable<any> {
-    return this.http.get(environment.apiUrl + 'cars/available/?dateStart=' + this.reservationTimes.dateStart + '&dateEnd=' + this.reservationTimes.dateEnd);
-  }
-=======
+
   createReservation(reservation :any) :Observable<any>{
     return this.http.post(environment.apiUrl +'reservations', reservation);
   }
@@ -52,6 +40,7 @@ export class CarApiService {
   findCustomerById(id :number) :Observable<any>{
     return this.http.get(environment.apiUrl + 'customers/' + id)
   }
+
   /*
   findReservation(id :number, lname :string) :Observable<any> {
     return this.http.get(environment.apiUrl + 'reservations/' + id + '/' + lname)
@@ -71,5 +60,4 @@ export class CarApiService {
   deleteReservation(reservation :any):Observable<any> {
     return this.http.delete(environment.apiUrl + 'reservations/' + this.chosenReservation.id)
   }
->>>>>>> Stashed changes
 }

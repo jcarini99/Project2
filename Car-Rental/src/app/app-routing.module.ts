@@ -4,6 +4,7 @@ import { HomeContentComponent } from './home-content/home-content.component';
 import { CarApiService } from './car-api.service';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch:'full'},
@@ -13,7 +14,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),
+            FormsModule,
+            ReactiveFormsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -65,6 +65,11 @@ export class ReviewComponent implements OnInit {
       console.log("chosenReservation",this.service.chosenReservation);
       this.service.findReservationByIdAndCustomerId(this.service.chosenReservation.reservationId, this.service.chosenReservation.customerId).subscribe(data => {
       this.reservation = data;
+      this.service.findCustomerById(this.reservation.customer).subscribe(custData => {
+        this.service.chosenCustomer = custData;
+        this.whatever = this.service.chosenCustomer;
+        console.log("chosenCustomer", this.whatever)
+      })
       console.log("reservation", data);
       console.log("reservation", this.reservation);
       })
@@ -165,3 +170,4 @@ export class ReviewComponent implements OnInit {
   }
   
 }
+
