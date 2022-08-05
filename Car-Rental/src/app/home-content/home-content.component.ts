@@ -25,6 +25,9 @@ export class HomeContentComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.service.reservation = null;
+    this.service.reservationTimes = null;
+    this.service.chosenVehicle = null;
   }
   updateDateStart(e :any) :void {
     this.dateStart = new Date(e);
@@ -67,11 +70,6 @@ export class HomeContentComponent implements OnInit {
   reservationCheck() :Boolean{
     let reservation = this.service.findReservationByIdAndCustomerId(this.reservationId,this.customerId);
     if(reservation != null){
-      reservation.subscribe(data => {
-        this.service.reservation = data;
-        console.log("reservationCheck",data)
-      })
-      
       return true;
     } else { 
       return false;
@@ -89,14 +87,6 @@ export class HomeContentComponent implements OnInit {
     if (validInput){
       this.service.chosenReservation={reservationId :this.reservationId,
                                       customerId: this.customerId}
-                                      console.log("reservationParams", this.service.chosenReservation)
-
-    
-      this.service.findCustomerById(this.service.chosenReservation.customerId).subscribe(data => {
-        this.service.chosenCustomer = data;
-        console.log("customer", this.service.chosenCustomer);
-
-    })
       this.router.navigateByUrl('/review')
     }
   }

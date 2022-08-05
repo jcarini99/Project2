@@ -16,6 +16,20 @@ export class ReviewComponent implements OnInit {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
 
+/*   today = new Date();
+  dateStart: any;
+  dateEnd: any;
+  vehicle: any;
+  vehicleId: any;
+  vehicleMake: any;
+  vehicleModel: any;
+  vehicleYear: any;
+  vehicleTier: any;
+  reservation: any = {}
+  reservationObject: any = {}
+  customerObject: any = {}
+  customer: Array<any> = [];
+  customerId: number = 0; */
   today = new Date();
   dateStart: any;
   dateEnd: any;
@@ -35,29 +49,50 @@ export class ReviewComponent implements OnInit {
   phoneNumber: any;
   dateOfBirth: any;
   whatever:any = {};
+  customerArray:any ={};
 
-
-
-  // checkoutForm = new FormGroup({
-  //   firstName: new FormControl('', [Validators.pattern(/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/), Validators.required, Validators.minLength(1)]),
-  //   lastName: new FormControl('', [Validators.pattern(/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/), Validators.required, Validators.minLength(1)]),
-  //   email: new FormControl('', [Validators.email, Validators.required]),
-  //   email2: new FormControl('', [Validators.required]),
-  //   phoneNumber: new FormControl('', [Validators.pattern(/^\+?\d*$/), Validators.required, Validators.minLength(10)]),
-  //   dateOfBirth: new FormControl('', [Validators.required, verifyAgeValidator])
-  // }, { validators: [confirmEmailValidator] });
+  /* checkoutForm = new FormGroup({
+    firstName: new FormControl('', [Validators.pattern(/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/), Validators.required, Validators.minLength(1)]),
+    lastName: new FormControl('', [Validators.pattern(/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/), Validators.required, Validators.minLength(1)]),
+    email: new FormControl('', [Validators.email, Validators.required]),
+    email2: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.pattern(/^\+?\d*$/), Validators.required, Validators.minLength(10)]),
+    dateOfBirth: new FormControl('', [Validators.required, verifyAgeValidator])
+  }, { validators: [confirmEmailValidator] }); */
 
   constructor(service: CarApiService, private router: Router) {
     this.service = service;
 
   }
 
+  /* ngOnInit(): void {
+    if (this.service.reservationTimes.dateStart == null || this.service.reservationTimes.dateEnd == null) {
+      this.router.navigateByUrl('/home')
+    }
+    else if ((this.service.reservationTimes.dateStart != null && this.service.reservationTimes.dateEnd != null) && this.service.chosenVehicle.id == null) {
+      this.router.navigateByUrl('/cars')
+    }
+    else {
+
+
+      this.vehicle = this.service.chosenVehicle;
+      this.vehicleId = this.service.chosenVehicle.id;
+      this.vehicleMake = this.service.chosenVehicle.make;
+      this.vehicleModel = this.service.chosenVehicle.model;
+      this.vehicleYear = this.service.chosenVehicle.year;
+      this.vehicleTier = this.service.chosenVehicle.tier;
+      this.dateStart = this.service.reservationTimes.dateStart;
+      this.dateEnd = this.service.reservationTimes.dateEnd;
+      this.alterDate(this.dateStart, this.dateEnd);
+    }
+  } */
+
   ngOnInit(): void {
     
     if(this.service.reservation != null){
       this.service.findCustomerById(this.service.reservation.customer).subscribe(data => {
         this.service.chosenCustomer = data; 
-        this.whatever = this.service.chosenCustomer;
+        this.customerArray = this.service.chosenCustomer;
         console.log("chosenCustomer",this.service.chosenCustomer);
         });
         this.reservation = this.service.reservation;
@@ -66,15 +101,16 @@ export class ReviewComponent implements OnInit {
       this.service.findReservationByIdAndCustomerId(this.service.chosenReservation.reservationId, this.service.chosenReservation.customerId).subscribe(data => {
       this.reservation = data;
       this.service.findCustomerById(this.reservation.customer).subscribe(custData => {
-        this.service.chosenCustomer = custData;
-        this.whatever = this.service.chosenCustomer;
-        console.log("chosenCustomer", this.whatever)
-      })
-      console.log("reservation", data);
+        this.service.chosenCustomer = custData; 
+        this.customerArray = this.service.chosenCustomer;
+        console.log("chosenCustomerNew", this.service.chosenCustomer);
+        });
+      console.log("reservationData", data);
       console.log("reservation", this.reservation);
       })
     }
   }
+
 
 
   updateDateStart(e :any) :void {
@@ -98,46 +134,46 @@ export class ReviewComponent implements OnInit {
   }
 
   submit(): void {
-    // if (this.checkoutForm.invalid) {
-    //   console.log("got here")
-    //   return;
-    // }
-    // else {
-    //   let dob = this.checkoutForm.controls['dateOfBirth'].value;
-    //   let dateob = new Date(String(dob));
-    //   let date = dateob.getFullYear() + "-" + (dateob.getMonth() + 1) + "-" + dateob.getDate();
-    //   this.customerObject = {
-    //     firstName:this.checkoutForm.controls['firstName'].value,
-    //     lastName:this.checkoutForm.controls['lastName'].value,
-    //     email:this.checkoutForm.controls['email'].value,
-    //     phoneNumber: this.checkoutForm.controls['phoneNumber'].value,
-    //     dateOfBirth: date,
-    //   }
-    //   console.log("checkout form value", this.customerObject)
-    //   this.service.createCustomer(this.customerObject).subscribe(data => {
-    //     this.customer = data;
-    //     this.customerId = data.id;
-    //     /* Creating a reservation object with the car, customer, start, and end properties. */
-    //   this.reservationObject = {
+   /*  if (this.checkoutForm.invalid) {
+      console.log("got here")
+      return;
+    }
+    else {
+      let dob = this.checkoutForm.controls['dateOfBirth'].value;
+      let dateob = new Date(String(dob));
+      let date = dateob.getFullYear() + "-" + (dateob.getMonth() + 1) + "-" + dateob.getDate();
+      this.customerObject = {
+        firstName:this.checkoutForm.controls['firstName'].value,
+        lastName:this.checkoutForm.controls['lastName'].value,
+        email:this.checkoutForm.controls['email'].value,
+        phoneNumber: this.checkoutForm.controls['phoneNumber'].value,
+        dateOfBirth: date,
+      }
+      console.log("checkout form value", this.customerObject)
+      this.service.createCustomer(this.customerObject).subscribe(data => {
+        this.customer = data;
+        this.customerId = data.id;
+        // Creating a reservation object with the car, customer, start, and end properties. 
+      this.reservationObject = {
 
-    //     car: {
-    //       id: this.service.chosenVehicle.id,
-    //       make: this.service.chosenVehicle.make,
-    //       model: this.service.chosenVehicle.model,
-    //       year: this.service.chosenVehicle.year,
-    //       tier: this.service.chosenVehicle.tier,
-    //     },
-    //     customer: {
-    //       id: this.customerId,
-    //     },
-    //     start: this.service.reservationTimes.dateStart,
-    //     end: this.service.reservationTimes.dateEnd,
-    //   }
-    //     this.service.updateReservation(this.reservationObject).subscribe(data => {
-    //       this.reservation = data;
-    //     })
-    //   })
-    // }
+        car: {
+          id: this.service.chosenVehicle.id,
+          make: this.service.chosenVehicle.make,
+          model: this.service.chosenVehicle.model,
+          year: this.service.chosenVehicle.year,
+          tier: this.service.chosenVehicle.tier,
+        },
+        customer: {
+          id: this.customerId,
+        },
+        start: this.service.reservationTimes.dateStart,
+        end: this.service.reservationTimes.dateEnd,
+      }
+        this.service.createReservation(this.reservationObject).subscribe(data => {
+          this.reservation = data;
+        })
+      })
+    } */
 
   }
 
@@ -148,17 +184,10 @@ export class ReviewComponent implements OnInit {
     this.dateEnd = myArray2[1] + "-" + myArray2[2] + "-" + myArray2[0]
   }
 
-  
- formatDoB(DoB: any):void {
-  const myArray = DoB.split("-");
-  this.dateOfBirth = myArray[1] + "-" + myArray[2] + "-" + myArray[0];
- }
-
-  // showDoBError() {
-  //   if (!this.checkoutForm.value.dateOfBirth) return true;
-  //   return false;
-  // }
-
+/*   showDoBError() {
+    if (!this.checkoutForm.value.dateOfBirth) return true;
+    return false;
+  } */
 
   updateDate(e: any): void {
     /*
@@ -170,4 +199,3 @@ export class ReviewComponent implements OnInit {
   }
   
 }
-

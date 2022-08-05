@@ -129,7 +129,7 @@ button {
     line-height: 1.625;
 }
 .select-btn{
-    min-width: 165px;
+    min-width: 203px;
     min-height: 65px;
     font-size: 18px!important;
     border-radius: 5px;
@@ -139,7 +139,7 @@ button {
     cursor: pointer;
 }
 .delete-btn{
-    min-width: 165px;
+    min-width: 203px;
     min-height: 65px;
     font-size: 18px!important;
     border-radius: 5px;

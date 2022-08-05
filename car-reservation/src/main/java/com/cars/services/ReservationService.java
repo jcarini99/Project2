@@ -2,6 +2,7 @@ package com.cars.services;
 
 import java.util.List;
 
+import com.cars.models.Car;
 import com.cars.models.Reservation;
 
 public interface ReservationService {
@@ -22,4 +23,5 @@ public interface ReservationService {
 	
 	//Validate reservations
 	List<Reservation> validateAvailReservation(String dateStart, String dateEnd, int carId);
+	List<Reservation> validateAvailUpdate(String dateStart, String dateEnd, int carId, int reservationId);
 }

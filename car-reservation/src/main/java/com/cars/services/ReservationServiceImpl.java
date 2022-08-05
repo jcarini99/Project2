@@ -78,6 +78,12 @@ public class ReservationServiceImpl implements ReservationService{
 		return (List<Reservation>)reservationRepository.validateCarReservation(dateStart, dateEnd, carId);
 	}
 
+	@Override
+	public List<Reservation> validateAvailUpdate(String dateStart, String dateEnd, int carId, int reservationId) {
+	
+		return (List<Reservation>)reservationRepository.validateCarUpdate(dateStart, dateEnd, carId, reservationId);
+	}
+
 	
 	
 

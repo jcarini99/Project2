@@ -16,9 +16,13 @@ export class CarApiService {
                         year: null,
                         tier: null}; 
   chosenReservation :any = {reservationId: null,
-                            customerId: null}
+                            customerId: null};
+  
 
-  chosenCustomer :any 
+            
+  chosenCustomer :any                          
+
+
   reservation :any = null;
   http :HttpClient;
 
@@ -40,7 +44,6 @@ export class CarApiService {
   findCustomerById(id :number) :Observable<any>{
     return this.http.get(environment.apiUrl + 'customers/' + id)
   }
-
   /*
   findReservation(id :number, lname :string) :Observable<any> {
     return this.http.get(environment.apiUrl + 'reservations/' + id + '/' + lname)

@@ -47,6 +47,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReserveComponent } from './reserve/reserve.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { ReserveComponent } from './reserve/reserve.component';
     HomeContentComponent,
     VehicleListComponent,
     CustomerFormComponent,
-    ReserveComponent
+    ReserveComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -98,6 +101,7 @@ import { ReserveComponent } from './reserve/reserve.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    ReactiveFormsModule,
     
   ],
   providers: [],
