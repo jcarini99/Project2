@@ -128,6 +128,14 @@ export class ReviewComponent implements OnInit {
     console.log("ResBeforeUpdate", reservation)
     this.service.updateReservation(reservation).subscribe(data => {
        this.resUpdate = data;
+       if (this.resUpdate)
+       {
+        
+       }
+       else
+       {
+        
+       }
     });
     console.log("update Result", this.resUpdate)
     this.router.navigateByUrl('/home')
