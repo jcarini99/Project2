@@ -154,10 +154,64 @@ button {
     box-shadow: 0px 2px 8px rgb(0 0 0 / 16%);
 }
 .checkout-header{
-    margin: 0 0 0 20px;
+    margin: 0 10 0 20px;
 }
 
 .button-space{
     margin: 1 1 1 1px;
     border: 2 px;
+}
+.reserve-confirmation{
+    max-width: fit-content;
+    min-height: 40px;
+    padding: 12px 25px;
+    background: #FFF;
+    position: relative;
+    border-top: 6px solid #0E67B4;
+    border-bottom: 6px solid #0E67B4;
+    border-radius: 12px;
+    margin: 0 0 0 20px;
+    
+}
+.bold{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.line-space{
+    border-top: solid #000;
+    margin-top: 10px;
+}
+thead,
+tfoot {
+    background-color: #fff;
+    color: #000;
+}
+
+tbody {
+    background-color: #fff;
+}
+
+caption {
+    padding: 10px;
+    caption-side: bottom;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    font-size: .9rem;
+}
+
+td,
+th {
+    border: 1px solid #fff;
+    padding: 5px 10px;
+}
+
+td {
+    text-align: center;
 }

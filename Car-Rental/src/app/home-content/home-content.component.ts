@@ -28,7 +28,6 @@ export class HomeContentComponent implements OnInit {
   carYear: any;
   dateOfStart: any;
   dateOfEnd: any;
-  columnsToDisplay = ['Reservation ID', 'Customer ID', 'Vehicle Make', 'Vehicle Model', 'Vehicle Year', 'Reservation Start Date', 'Reservation End Date']
 
 
 
@@ -50,6 +49,7 @@ export class HomeContentComponent implements OnInit {
       this.service.reservation = null;
 
     }
+    this.service.reserveConfirmation = false;
   }
 
   updateDateStart(e :any) :void {

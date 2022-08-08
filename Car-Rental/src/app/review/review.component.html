@@ -1,6 +1,24 @@
 <div class="customer-checkout">
     <div class="customer-checkout-container">
         <h1 class="checkout-header">View, Edit, or Cancel Reservation</h1>
+        <div *ngIf="service.reserveConfirmation" class="reserve-confirmation">
+            <div class="bold">Reservation Successful!</div>
+            <div>Check Email for Reservation Summary.</div>
+            <table class="line-space" >
+                <thead>
+                    <tr>
+                        <th scope="col">Reservation ID</th>
+                        <th scope="col">Customer ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">{{reservation.id}}</td>
+                        <td scope="row">{{reservation.customer}}</td>
+                    </tr>                            
+                </tbody>
+            </table>
+        </div>
         <div class="review-container">
             <div class="customer-form-container">
                 <div class="form-header">
