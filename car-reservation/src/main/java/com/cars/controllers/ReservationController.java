@@ -68,9 +68,11 @@ public class ReservationController {
     public Reservation updateReservation(@RequestBody Reservation reservation,
             @PathVariable("id") int reservationId) {
     	if (reservationService.validateAvailUpdate(reservation.getStart(), reservation.getEnd(),
-                reservation.getCar().getId(), reservation.getId()).isEmpty())
+                reservation.getCar().getId(), reservation.getId()).isEmpty()) {
+    		reservation.setId(reservationId);
     		return reservationService.updateReservation(
-                reservation, reservationId);
+                reservation);
+    	}
     	else 
     		return null;
     }

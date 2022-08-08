@@ -123,7 +123,19 @@
                     <div class="button-space"><button class="delete-btn" form="customer-form" type="submit">Delete Reservation</button></div>
                     
                 </div>
+        </div>
 
+        <div class="footer-row">
+            
+            <div *ngIf="res">
+                    <h1>Your reservation is booked!</h1>
+             <!--      <h2>Your reservation ID number is: [(ngModel)]="customerArray.phoneNumber"</h2>
+                    <h2>Your customer ID number is: [(ngModel)]="customerArray.phoneNumber" </h2> --> 
+
+            </div>
+            <div *ngIf="!res">
+                <h1>Update your reservation</h1>
+            </div>
         </div>
     </div>
 </div>

@@ -155,6 +155,15 @@ button {
     margin: 0 0 0 20px;
 }
 
+.reservation-footer{
+    margin: 0 0 0 20px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    }
+
 .button-space{
     margin: 1 1 1 1px;
     border: 2 px;

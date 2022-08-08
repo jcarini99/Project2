@@ -60,7 +60,7 @@ export class CarApiService {
     return this.http.put(environment.apiUrl + 'reservations', reservation);
   }
 
-  deleteReservation(reservation :any):Observable<any> {
-    return this.http.delete(environment.apiUrl + 'reservations/' + this.chosenReservation.id)
+  deleteReservation(reservationId :number):Observable<any> {
+    return this.http.delete(environment.apiUrl + 'reservations/' + reservationId)
   }
 }

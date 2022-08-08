@@ -47,8 +47,8 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 		
 	@Override
-	public Reservation updateReservation(Reservation reservation, int reservationId) {
-		
+	public Reservation updateReservation(Reservation reservation) {
+		/*
         Reservation resDB
         = reservationRepository.findById(reservationId).get();
         
@@ -60,8 +60,9 @@ public class ReservationServiceImpl implements ReservationService{
         	resDB.setEnd(reservation.getEnd());
         	resDB.setCar(reservation.getCar());
         }
+        */
 
-        return reservationRepository.save(resDB);
+        return reservationRepository.save(reservation);
 	}
 
 	@Override

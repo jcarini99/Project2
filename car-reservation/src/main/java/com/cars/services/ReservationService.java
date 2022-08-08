@@ -16,7 +16,8 @@ public interface ReservationService {
 	Reservation fetchReservationByIdAndCustomerId(int id, int customerId);
 	
 	// Update operation
-	Reservation updateReservation(Reservation reservation, int reservationId);
+//Reservation updateReservation(Reservation reservation, int reservationId);
+	Reservation updateReservation(Reservation reservation);
 	
 	// Delete operation
 	void deleteReservationById(int reservationId);

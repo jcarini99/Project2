@@ -50,6 +50,7 @@ export class ReviewComponent implements OnInit {
   dateOfBirth: any;
   whatever:any = {};
   customerArray:any ={};
+  res :boolean = false;
 
   /* checkoutForm = new FormGroup({
     firstName: new FormControl('', [Validators.pattern(/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/), Validators.required, Validators.minLength(1)]),
@@ -86,16 +87,18 @@ export class ReviewComponent implements OnInit {
       this.alterDate(this.dateStart, this.dateEnd);
     }
   } */
-
   ngOnInit(): void {
     
     if(this.service.reservation != null){
       this.service.findCustomerById(this.service.reservation.customer).subscribe(data => {
         this.service.chosenCustomer = data; 
         this.customerArray = this.service.chosenCustomer;
+        this.setReservation(true);
+        this.reservation = this.service.reservation;
         console.log("chosenCustomer",this.service.chosenCustomer);
         });
-        this.reservation = this.service.reservation;
+      //  this.reservation = this.service.reservation;
+        
     }else{
       console.log("chosenReservation",this.service.chosenReservation);
       this.service.findReservationByIdAndCustomerId(this.service.chosenReservation.reservationId, this.service.chosenReservation.customerId).subscribe(data => {
@@ -103,11 +106,13 @@ export class ReviewComponent implements OnInit {
       this.service.findCustomerById(this.reservation.customer).subscribe(custData => {
         this.service.chosenCustomer = custData; 
         this.customerArray = this.service.chosenCustomer;
+        this.setReservation(false);
         console.log("chosenCustomerNew", this.service.chosenCustomer);
         });
       console.log("reservationData", data);
       console.log("reservation", this.reservation);
       })
+      
     }
   }
 
@@ -196,6 +201,10 @@ export class ReviewComponent implements OnInit {
     const diffTime = Math.abs((Date.now() - datePicked.getTime()))
     const age = Math.floor(diffTime / (1000 * 3600 * 24) / 365.25);
     */
+  }
+
+  setReservation(val:boolean){
+    this.res = val;
   }
   
 }
