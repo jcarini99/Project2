@@ -128,6 +128,8 @@ export class CustomerFormComponent implements OnInit {
           this.service.reservation = data;
           this.service.reservationTimes = null;
           this.service.chosenVehicle = null;
+          this.service.pageSwitch=true;
+          this.service.reserveConfirmation = true; // Use this boolean to make a confirmation message appear on /review using ngIf* = "service.reserveConfirmation"
           this.router.navigateByUrl('/review')
         })
       })

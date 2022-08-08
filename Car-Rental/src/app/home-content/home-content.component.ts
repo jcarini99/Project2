@@ -91,6 +91,12 @@ export class HomeContentComponent implements OnInit {
         this.service.chosenReservation={reservationId :this.reservationId,
                                         customerId: this.customerId}
         this.service.pageSwitch=true;
+        if (this.service.updateConfirmation == true){
+          this.service.updateConfirmation = false;
+        }
+        if (this.service.deleteConfirmation == true){
+          this.service.deleteConfirmation = false;
+        }
         this.router.navigateByUrl('/review')
       }
       else{

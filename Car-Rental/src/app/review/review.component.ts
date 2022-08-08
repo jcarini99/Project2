@@ -45,7 +45,7 @@ export class ReviewComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.service.pageSwitch == false){
-        this.router.navigateByUrl('/home')
+        this.router.navigateByUrl('/home') // makes sure page cannot reload without reservation contents
     }
     if(this.service.reservation != null){
       this.service.findCustomerById(this.service.reservation.customer).subscribe(data => {
@@ -141,12 +141,20 @@ export class ReviewComponent implements OnInit {
     });
     console.log("update Result", this.resUpdate)
     this.service.pageSwitch = false;
+    if (this.service.reserveConfirmation){
+      this.service.reserveConfirmation = false;
+    }
+    this.service.updateConfirmation = true; // Use this boolean to make a confirmation message appear on /home using ngIf* = "service.updateConfirmation"
     this.router.navigateByUrl('/home')
   }
 
   deleteReservation(id :number){
     this.service.deleteReservation(id).subscribe(data => {});
     this.service.pageSwitch = false;
+    if (this.service.reserveConfirmation){
+      this.service.reserveConfirmation = false;
+    }
+    this.service.deleteConfirmation = true; // Use this boolean to make a confirmation message appear on /home using ngIf* = "service.deleteConfirmation"
     this.router.navigateByUrl('/home')
 
   }
