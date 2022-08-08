@@ -44,7 +44,9 @@ export class ReviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    if (this.service.pageSwitch == false){
+        this.router.navigateByUrl('/home')
+    }
     if(this.service.reservation != null){
       this.service.findCustomerById(this.service.reservation.customer).subscribe(data => {
         this.service.chosenCustomer = data; 
@@ -138,11 +140,13 @@ export class ReviewComponent implements OnInit {
        }
     });
     console.log("update Result", this.resUpdate)
+    this.service.pageSwitch = false;
     this.router.navigateByUrl('/home')
   }
 
   deleteReservation(id :number){
     this.service.deleteReservation(id).subscribe(data => {});
+    this.service.pageSwitch = false;
     this.router.navigateByUrl('/home')
 
   }

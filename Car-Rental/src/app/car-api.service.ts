@@ -22,6 +22,7 @@ export class CarApiService {
 
   reservation :any = null;
   http :HttpClient;
+  pageSwitch: boolean = false;
 
   constructor(http :HttpClient) { 
     this.http = http;

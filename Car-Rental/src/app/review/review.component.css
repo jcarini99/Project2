@@ -137,6 +137,7 @@ button {
     background-color: #0E67B4;
     border: 2px solid #0E67B4;
     cursor: pointer;
+    margin: 2px;
 }
 .delete-btn{
     min-width: 203px;
@@ -147,6 +148,7 @@ button {
     background-color: #e00404;
     border: 2px solid #e00404;
     cursor: pointer;
+    margin: 2px;
 }
 .select-btn:hover{
     box-shadow: 0px 2px 8px rgb(0 0 0 / 16%);

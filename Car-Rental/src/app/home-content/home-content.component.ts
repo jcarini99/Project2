@@ -89,7 +89,8 @@ export class HomeContentComponent implements OnInit {
       if (this.validReservation)
       {
         this.service.chosenReservation={reservationId :this.reservationId,
-          customerId: this.customerId}
+                                        customerId: this.customerId}
+        this.service.pageSwitch=true;
         this.router.navigateByUrl('/review')
       }
       else{
