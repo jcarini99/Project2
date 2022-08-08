@@ -20,14 +20,38 @@ export class HomeContentComponent implements OnInit {
   VEC :boolean = false;
   validReservation :any;
 
+  //Local Variables for Update Confirmation
+  resId: any;
+  custId: any;
+  carMake: any;
+  carModel: any;
+  carYear: any;
+  dateOfStart: any;
+  dateOfEnd: any;
+  columnsToDisplay = ['Reservation ID', 'Customer ID', 'Vehicle Make', 'Vehicle Model', 'Vehicle Year', 'Reservation Start Date', 'Reservation End Date']
+
+
 
   constructor(service :CarApiService, private router: Router) {
     this.service = service;
    }
 
   ngOnInit(): void {
-    this.service.reservation = null;
+    if (this.service.reservation != null){
+      
+      console.log("ResOnHome")
+      this.resId = this.service.reservation.id;
+      this.custId = this.service.reservation.customer;
+      this.carMake = this.service.reservation.car.make;
+      this.carModel = this.service.reservation.car.model;
+      this.carYear = this.service.reservation.car.year;
+      this.dateOfStart = this.service.reservation.start;
+      this.dateOfEnd = this.service.reservation.end;
+      this.service.reservation = null;
+
+    }
   }
+
   updateDateStart(e :any) :void {
     this.dateStart = new Date(e);
   }
