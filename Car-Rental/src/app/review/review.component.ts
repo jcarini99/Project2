@@ -153,10 +153,12 @@ export class ReviewComponent implements OnInit {
         this.reservation.car.year = this.service.chosenVehicle.year
         this.reservation.car.tier = this.service.chosenVehicle.tier
         let start = new Date(this.reservation.start)
+        this.checkedDateStart = start;
         this.dateStart = this.datepipe.transform(start, 'MM-dd-yyyy');
         let end = new Date(this.reservation.end)
         this.dateEnd = this.datepipe.transform(end, 'MM-dd-yyyy')
-
+        this.checkedDateEnd = end;
+        
         this.dateStartAlter = start
 
         this.dateEndAlter = end;
