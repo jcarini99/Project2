@@ -52,9 +52,9 @@ public class ReservationController {
         if (reservationService.validateAvailReservation(reservation.getStart(), reservation.getEnd(),
                 reservation.getCar().getId()).isEmpty())
             return reservationService.saveReservation(reservation);
-        else
+        else {
         	System.out.println("reservation body" + reservation);
-            return null;
+            return null;}
     }
     
     //Validate operation
