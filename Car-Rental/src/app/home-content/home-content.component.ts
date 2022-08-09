@@ -28,6 +28,7 @@ export class HomeContentComponent implements OnInit {
   carYear: any;
   dateOfStart: any;
   dateOfEnd: any;
+  showError: Boolean = false;
 
 
 
@@ -86,9 +87,11 @@ export class HomeContentComponent implements OnInit {
     let newDate = new Date(start)
     newDate = new Date(newDate.setDate(newDate.getDate() + 1))
     if ((end >= newDate)) {
+      this.showError = false;
       return true;
     }
     else {
+      this.showError = true;
       return false;
     }
   }

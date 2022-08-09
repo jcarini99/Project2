@@ -175,3 +175,8 @@ th {
 td {
     text-align: center;
 }
+.error-message{
+    color: red;
+    bottom: 22px;
+    position: relative;
+}

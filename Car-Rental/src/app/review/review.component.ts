@@ -40,6 +40,9 @@ export class ReviewComponent implements OnInit {
   dateStartAlter: any;
   dateEndAlter: any;
   serializedDate: any;
+  showError: Boolean = false;
+  showErrorCar: Boolean = false;
+
   //editing :boolean;
 
 
@@ -181,17 +184,6 @@ export class ReviewComponent implements OnInit {
     this.dateEnd = this.datepipe.transform(this.dateEnd, 'MM-dd-yyyy');
   }
 
-  dateCheck(start: any, end: any): Boolean {
-    let newDate = new Date(start)
-    newDate = new Date(newDate.setDate(newDate.getDate() + 1))
-    if ((end >= newDate)) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
   alterDate(start: any, end: any): void {
     // const myArray = start.split("-");
     // const myArray2 = end.split("-");
@@ -215,16 +207,19 @@ export class ReviewComponent implements OnInit {
 
   updateReservation(reservation: any) {
     console.log("ResBeforeUpdate", reservation)
+    let inRange = this.dateCheck(reservation.start, reservation.end)
+    if (inRange){
     this.service.updateReservation(reservation).subscribe(data => {
        this.resUpdate = data;
        if (this.resUpdate)
        {
+        this.showErrorCar = false
         this.service.reservation = this.resUpdate;
         console.log("ReservationAfterUpdate",this.resUpdate)
        }
        else
        {
-        alert("pick new car")
+        this.showErrorCar = true
        }
        console.log("update Result", this.resUpdate)
       this.service.pageSwitch = false;
@@ -234,7 +229,7 @@ export class ReviewComponent implements OnInit {
       this.service.updateConfirmation = true; // Use this boolean to make a confirmation message appear on /home using ngIf* = "service.updateConfirmation"
       this.router.navigateByUrl('/home')
     });
-    
+  }
   }
 
   deleteReservation(id: number) {
@@ -266,5 +261,17 @@ export class ReviewComponent implements OnInit {
     this.dateEndAlter = end;
     this.service.editing = false;
 
+  }
+  dateCheck(start: any, end: any): Boolean {
+    let newDate = new Date(start)
+    newDate = new Date(newDate.setDate(newDate.getDate() + 1))
+    if ((end >= newDate)) {
+      this.showError = false;
+      return true;
+    }
+    else {
+      this.showError = true;
+      return false;
+    }
   }
 }
