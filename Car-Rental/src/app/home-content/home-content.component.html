@@ -8,7 +8,7 @@
                 <div class="reservation-form">
                     <div *ngIf="!VEC">
                        <div class="manage-row">
-                            <div class="left-side">
+                            <div class="left-side bold">
                                 Select Reservation Dates to View Available Cars:
                             </div>
                             <div class="right-side">
@@ -52,7 +52,7 @@
                     </div>
                     <div *ngIf="VEC">
                         <div class="manage-row">
-                             <div class="left-side">
+                             <div class="left-side bold">
                                  Enter Reservation ID and Last Name to View, Edit, or Cancel Reservation:
                              </div>
                              <div class="right-side ">
@@ -81,32 +81,40 @@
                 </div>
                 <div *ngIf="service.updateConfirmation" class="update-form">
                     <div class="manage-row">
-                        <div class="left-side">
+                        <div class="left-side bold">
                           Reservation Successfully Updated!
                         </div>
                     </div>
-                    <!--  
-                    <table mat-table class="manage-row">
-                        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-                        <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
-                        <tr>
-                            <td>{{resId}}</td>
-                            <td>{{custId}}</td>
-                            <td>{{resId}}</td>
-                            <td>{{carMake}}</td>
-                            <td>{{carModel}}</td>
-                            <td>{{carYear}}</td>
-                            <td>{{dateOfStart}}</td>
-                            <td>{{dateOfEnd}}</td>
-                        </tr>
-                    </table> 
-                    --> 
-    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Reservation ID</th>
+                                <th scope="col">Customer ID</th>
+                                <th scope="col">Vehicle Make</th>
+                                <th scope="col">Vehicle Model</th>
+                                <th scope="col">Vehicle Year</th>
+                                <th scope="col">Reservation Start Date</th>
+                                <th scope="col">Reservation End Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">{{resId}}</td>
+                                <td scope="row">{{custId}}</td>
+                                <td scope="row">{{carMake}}</td>
+                                <td scope="row">{{carModel}}</td>
+                                <td scope="row">{{carYear}}</td>
+                                <td scope="row">{{dateOfStart}}</td>
+                                <td scope="row">{{dateOfEnd}}</td>
+                            </tr>                            
+                        </tbody>
+                    </table>
+                    
                         
                 </div>
                 <div *ngIf="service.deleteConfirmation" class="delete-form">
                     <div class="manage-row">
-                        <div class="left-side">
+                        <div class="left-side bold">
                             Reservation Successfully Deleted!
                         </div>
                     </div> 

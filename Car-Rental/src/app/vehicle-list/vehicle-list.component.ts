@@ -24,8 +24,10 @@ export class VehicleListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     console.log("dateStart", this.service.reservationTimes.dateStart)
-    if (this.service.reservationTimes.dateStart == null || this.service.reservationTimes.dateEnd == null) {
+    if (this.service.reservationTimes.dateStart == null || this.service.reservationTimes.dateEnd == null || this.service.reservationTimes == null) {
+      console.log("vehicle got here")
       this.router.navigateByUrl('/home')
     }
     else {
@@ -35,8 +37,10 @@ export class VehicleListComponent implements OnInit {
       })
       this.onReady(this.callback)
     }
-    this.service.reservation = null;
   }
+  
+
+
   onReady(callback :Function) :void {
     var intervalId = window.setInterval(function() {
       if (document.getElementsByClassName('vehicle')[0] != undefined) {
@@ -60,7 +64,15 @@ export class VehicleListComponent implements OnInit {
       year: e.target.getAttribute("data-vehicle-year"),
       tier: e.target.getAttribute("data-vehicle-tier")
     }
-    this.router.navigateByUrl('/customers')
+    if(this.service.editing)
+    {
+      this.router.navigateByUrl('/review')
+    }
+    else
+    {
+      this.router.navigateByUrl('/customers')
+    }
+    
     
   }
 
