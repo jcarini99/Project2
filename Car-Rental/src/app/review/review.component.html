@@ -4,7 +4,11 @@
         <div class="review-container">
             <div class="customer-form-container">
                 <div class="form-header">
-                    <h4>Reservation Details</h4>
+                        <h4 class="section-title">Reservation Details</h4>
+                        <div style="display:flex">
+                        <button *ngIf="!this.service.editing" class="edit-button" (click)="enableEditing()">edit</button>
+                        <button *ngIf="this.service.editing" class="cancel-button" (click)="cancelEditing()">Cancel</button>
+                    </div>
                 </div>
                 <div class="customer-form">
                     <form class="example-form" name="customer-form" id="customer-form">
@@ -13,13 +17,14 @@
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>First name</mat-label>
-                                        <input  matInput name="first-name" [(ngModel)]="customerArray.firstName" disabled> 
+                                        <input matInput name="first-name" [(ngModel)]="customerArray.firstName"
+                                            disabled>
                                     </mat-form-field>
                                 </td>
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Last Name</mat-label>
-                                        <input matInput  name="last-name" [(ngModel)]="customerArray.lastName" disabled> 
+                                        <input matInput name="last-name" [(ngModel)]="customerArray.lastName" disabled>
 
                                     </mat-form-field>
                                 </td>
@@ -42,46 +47,61 @@
                                 <td>
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Phone Number</mat-label>
-                                        <input matInput name="phoneNumber" [(ngModel)]="customerArray.phoneNumber" disabled>
+                                        <input matInput name="phoneNumber" [(ngModel)]="customerArray.phoneNumber"
+                                            disabled>
                                     </mat-form-field>
                                 </td>
                                 <td>
 
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Date of Birth</mat-label>
-                                        <input matInput name = "dateOfBirth" [(ngModel)]="customerArray.dateOfBirth" disabled> 
+                                        <input matInput name="dateOfBirth" [(ngModel)]="customerArray.dateOfBirth"
+                                            disabled>
                                     </mat-form-field>
 
-                                    
+
                                 </td>
                             </tr>
                         </table>
-                        <table class="example-full-width" cellspacing="0">
-                            <tr>
-                                <td>
-                                    <mat-form-field class="example-full-width" appearance="fill">
-                                        <mat-label>Choose a date</mat-label>
-                                        <input matInput [matDatepicker]="picker" [min]="today" (dateInput)="updateDateStart($event.value)" [(ngModel)]="reservation.start" name="startDate" required>
-                                        <mat-hint>MM/DD/YYYY</mat-hint>
-                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>
-                                </td>
-                                <td>
 
-                                    <mat-form-field class="example-full-width" appearance="fill">
-                                        <mat-label>Choose a date</mat-label>
-                                        <input matInput [matDatepicker]="picker1" [min]="today" (dateInput)="updateDateEnd($event.value)" [(ngModel)]="reservation.end" name="endDate" required>
-                                        <mat-hint>MM/DD/YYYY</mat-hint>
-                                        <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
-                                        <mat-datepicker #picker1 ></mat-datepicker>                                        
-                                    </mat-form-field>
 
-                                    
-                                </td>
-                            </tr>
-                        </table>
                     </form>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" [min]="today"
+                                        (dateInput)="updateDateStart($event.value)" [(ngModel)]="dateStartAlter"
+                                        name="startDate" required [disabled]="!this.service.editing">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </td>
+                            <td>
+
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker1" [min]="today"
+                                        (dateInput)="updateDateEnd($event.value)" [(ngModel)]="dateEndAlter"
+                                        name="endDate" required [disabled]="!this.service.editing">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+
+
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <button [disabled]="!this.service.editing" class="changeCar" (click)="redirect()">Change Car</button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="reservation-container">
@@ -102,27 +122,30 @@
                     </div>
                 </div>
                 <div class="reserved-vehicle">
-                    <div class="vehicle-header">{{reservation.car.make}} {{reservation.car.model}} {{reservation.car.year}}</div>
+                    <div class="vehicle-header">{{reservation.car.make}} {{reservation.car.model}}
+                        {{reservation.car.year}}</div>
                     <div class="vehicle-img-container"><img class="vehicle-img"
                             src="../../assets/images/default-car.png" alt=""></div>
-                    
+
                 </div>
             </div>
-            
-                <div class="price-info">
-                    <div class="price-header">
-                        <h2 class="total-label">Est. Total</h2>
-                        <h2 class="total">400.00 USD</h2>
-                    </div>
-                    <div class="price-pickup">
-                        <p class="total-label">Charged At Pickup</p>
-                        <p class="total">400.00 USD</p>
-                    </div>
-                    <div class="rate-details"></div>
-                    <div class="button-space"><button class="select-btn" form="customer-form" (click)="updateReservation(reservation)">Update Reservation</button></div>
-                    <div class="button-space"><button class="delete-btn" form="customer-form" (click)="deleteReservation(reservation.id)">Delete Reservation</button></div>
-                    
+
+            <div class="price-info">
+                <div class="price-header">
+                    <h2 class="total-label">Est. Total</h2>
+                    <h2 class="total">400.00 USD</h2>
                 </div>
+                <div class="price-pickup">
+                    <p class="total-label">Charged At Pickup</p>
+                    <p class="total">400.00 USD</p>
+                </div>
+                <div class="rate-details"></div>
+                <div class="button-space"><button class="select-btn" form="customer-form"
+                        (click)="updateReservation(reservation)" [hidden]="!this.service.editing">Update Reservation</button></div>
+                <div class="button-space"><button class="delete-btn" form="customer-form"
+                        (click)="deleteReservation(reservation.id)" [hidden]="!this.service.editing">Delete Reservation</button></div>
+
+            </div>
 
         </div>
     </div>

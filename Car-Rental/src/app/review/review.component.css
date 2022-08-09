@@ -27,6 +27,18 @@
     align-items: center;
     display: flex;
 }
+.customer-checkout .customer-checkout-container .review-container .customer-form-container .form-header .section-title{
+    float:left;
+    margin-right: 55%;
+}
+.customer-checkout .customer-checkout-container .review-container .customer-form-container .form-header .edit-button a{
+    
+}
+.customer-checkout .customer-checkout-container .review-container .customer-form-container .form-header .edit-button{
+    float:right;
+    text-decoration: none;
+    color: #000;
+}
 .customer-checkout .customer-checkout-container .customer-form-container .form-header h4{
     padding-left: 15px;
 }
@@ -117,7 +129,6 @@ td {
     margin-right: 8px;
 }
 button {
-    display: inline-block;
     font-weight: bold;
     padding: 8px 15px;
     margin-bottom: 0;
@@ -127,6 +138,13 @@ button {
     border: none;
     color: #FFF;
     line-height: 1.625;
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor:default;
 }
 .select-btn{
     min-width: 203px;
@@ -160,4 +178,16 @@ button {
 .button-space{
     margin: 1 1 1 1px;
     border: 2 px;
+}
+
+.changeCar{
+    min-width: 203px;
+    min-height: 65px;
+    font-size: 18px!important;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #0E67B4;
+    border: 2px solid #0E67B4;
+    cursor: pointer;
+    margin: 2px;
 }

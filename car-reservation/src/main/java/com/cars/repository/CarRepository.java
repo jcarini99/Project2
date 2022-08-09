@@ -23,7 +23,11 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 			+ " FROM reservations r"
 			+ " WHERE (r.date_start AND r.date_end"
 			+ "	BETWEEN"
-			+ "	:date_start AND :date_end))"
+			+ "	:date_start AND :date_end)"
+			+ " OR"
+			+ " (:date_start AND :date_end"
+			+ " BETWEEN"
+			+ " r.date_start AND r.date_end))"
 			+ " ORDER BY c.car_id", nativeQuery = true)
 	public List<Car> findCarsWithoutReservation(@Param("date_start") String dateStart, @Param("date_end") String dateEnd);
 }

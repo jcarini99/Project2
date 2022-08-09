@@ -16,6 +16,8 @@ public interface ReservationRepository extends CrudRepository<Reservation, Integ
 	// fall between desired reservation times
 	@Query(value = "SELECT * FROM reservations r"
 			+ " WHERE (r.date_start AND r.date_end BETWEEN :date_start AND :date_end)"
+			+ " OR"
+			+ " (:date_start AND :date_end BETWEEN r.date_start AND r.date_end)"
 			+ " AND r.car_id = :car_id", nativeQuery = true)
 	public List<Reservation> validateCarReservation(@Param("date_start") String dateStart, @Param("date_end") String dateEnd, 
 			@Param("car_id") int carId);
@@ -24,6 +26,8 @@ public interface ReservationRepository extends CrudRepository<Reservation, Integ
 	// fall between desired reservation times
 	@Query(value = "SELECT * FROM reservations r"
 			+ " WHERE (r.date_start AND r.date_end BETWEEN :date_start AND :date_end)"
+			+ " OR"
+			+ " (:date_start AND :date_end BETWEEN r.date_start AND r.date_end)"
 			+ " AND r.car_id = :car_id " + "AND r.reservation_id != :reservation_id", nativeQuery = true)
 	public List<Reservation> validateCarUpdate(@Param("date_start") String dateStart, @Param("date_end") String dateEnd, 
 			@Param("car_id") int carId, @Param("reservation_id") int reservationId);

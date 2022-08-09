@@ -14,7 +14,7 @@ export class CarApiService {
 
   chosenReservation :any = {reservationId: null,
                             customerId: null};
-
+  tempDate :any = {}
                           
 
   chosenCustomer :any                          
@@ -26,6 +26,10 @@ export class CarApiService {
   reserveConfirmation :boolean = false;
   updateConfirmation :boolean = false;
   deleteConfirmation :boolean = false;
+
+  // indicate whether creating or editing so you can go to different pages
+  editing :boolean = false;
+  creating :boolean = false;
 
   constructor(http :HttpClient) { 
     this.http = http;
