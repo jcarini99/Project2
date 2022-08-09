@@ -76,10 +76,7 @@ export class ReviewComponent implements OnInit {
       })
     }
     
-
   }
-
-
 
   updateDateStart(e :any) :void {
     this.dateStart = new Date(e);
@@ -132,20 +129,22 @@ export class ReviewComponent implements OnInit {
        this.resUpdate = data;
        if (this.resUpdate)
        {
-        
+        this.service.reservation = this.resUpdate;
+        console.log("ReservationAfterUpdate",this.resUpdate)
        }
        else
        {
         
        }
+       console.log("update Result", this.resUpdate)
+      this.service.pageSwitch = false;
+      if (this.service.reserveConfirmation){
+        this.service.reserveConfirmation = false;
+      }
+      this.service.updateConfirmation = true; // Use this boolean to make a confirmation message appear on /home using ngIf* = "service.updateConfirmation"
+      this.router.navigateByUrl('/home')
     });
-    console.log("update Result", this.resUpdate)
-    this.service.pageSwitch = false;
-    if (this.service.reserveConfirmation){
-      this.service.reserveConfirmation = false;
-    }
-    this.service.updateConfirmation = true; // Use this boolean to make a confirmation message appear on /home using ngIf* = "service.updateConfirmation"
-    this.router.navigateByUrl('/home')
+    
   }
 
   deleteReservation(id :number){

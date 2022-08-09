@@ -35,6 +35,29 @@
     position: relative;
     border-bottom: 6px solid #0E67B4;
     border-radius: 12px;
+    margin: 5px;
+    
+}
+.update-form{
+    max-width: 100%;
+    min-height: 150px;
+    padding: 30px 40px;
+    background: #FFF;
+    position: relative;
+    border-bottom: 6px solid #0E67B4;
+    border-radius: 12px;
+    margin: 5px;
+    
+}
+.delete-form{
+    max-width: 100%;
+    /* min-height: 50px; */
+    padding: 30px 40px;
+    background: #FFF;
+    position: relative;
+    border-bottom: 6px solid #0E67B4;
+    border-radius: 12px;
+    margin: 5px;
     
 }
 .content-row{
