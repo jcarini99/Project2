@@ -42,6 +42,8 @@ export class ReviewComponent implements OnInit {
   serializedDate: any;
   showError: Boolean = false;
   showErrorCar: Boolean = false;
+  checkedDateStart :any;
+  checkedDateEnd :any;
 
   //editing :boolean;
 
@@ -66,9 +68,10 @@ export class ReviewComponent implements OnInit {
       this.reservation.customer = { id: this.service.reservation.customer };
       let start = new Date(this.reservation.start)
       this.dateStart = this.datepipe.transform(start, 'MM-dd-yyyy');
+      this.checkedDateStart = start;
       let end = new Date(this.reservation.end)
       this.dateEnd = this.datepipe.transform(end, 'MM-dd-yyyy')
-
+      this.checkedDateEnd = end;
       this.dateStartAlter = start
 
       this.dateEndAlter = end;
@@ -115,8 +118,10 @@ export class ReviewComponent implements OnInit {
         console.log("res times", this.service.reservationTimes)
         this.reservation.customer = { id: data.customer };
         let start = new Date(this.reservation.start)
+        this.checkedDateStart = start;
         this.dateStart = this.datepipe.transform(start, 'MM-dd-yyyy');
         let end = new Date(this.reservation.end)
+        this.checkedDateEnd = end;
         this.dateEnd = this.datepipe.transform(end, 'MM-dd-yyyy')
 
         this.dateStartAlter = start
@@ -171,6 +176,7 @@ export class ReviewComponent implements OnInit {
 
   updateDateStart(e: any): void {
     this.dateStart = new Date(e);
+    this.checkedDateStart = this.dateStart
     this.dateStartAlter = new Date(this.dateStart.getFullYear() + "-" + (this.dateStart.getMonth() + 1) + "-" + this.dateStart.getDate());
     this.reservation.start = this.dateStartAlter.getFullYear() + "-" + (this.dateStartAlter.getMonth() + 1) + "-" + this.dateStartAlter.getDate();
     this.service.reservationTimes.dateStart = this.reservation.start
@@ -178,6 +184,7 @@ export class ReviewComponent implements OnInit {
   }
   updateDateEnd(e: any): void {
     this.dateEnd = new Date(e);
+    this.checkedDateEnd = this.dateEnd
     this.dateEndAlter = new Date(this.dateEnd.getFullYear() + "-" + (this.dateEnd.getMonth() + 1) + "-" + this.dateEnd.getDate());
     this.reservation.end = this.dateEndAlter.getFullYear() + "-" + (this.dateEndAlter.getMonth() + 1) + "-" + this.dateEndAlter.getDate();
     this.service.reservationTimes.dateEnd = this.reservation.end
@@ -207,7 +214,7 @@ export class ReviewComponent implements OnInit {
 
   updateReservation(reservation: any) {
     console.log("ResBeforeUpdate", reservation)
-    let inRange = this.dateCheck(reservation.start, reservation.end)
+    let inRange = this.dateCheck(this.checkedDateStart, this.checkedDateEnd)
     if (inRange){
     this.service.updateReservation(reservation).subscribe(data => {
        this.resUpdate = data;
@@ -264,6 +271,7 @@ export class ReviewComponent implements OnInit {
   }
   dateCheck(start: any, end: any): Boolean {
     let newDate = new Date(start)
+    console.log("newdate", newDate)
     newDate = new Date(newDate.setDate(newDate.getDate() + 1))
     if ((end >= newDate)) {
       this.showError = false;
