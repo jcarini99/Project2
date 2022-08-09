@@ -126,7 +126,6 @@ export class CustomerFormComponent implements OnInit {
       }
         this.service.createReservation(this.reservationObject).subscribe(data => {
           this.service.reservation = data;
-          this.reservation.customer = { id: data.customer };
           console.log("created reservation", this.service.reservation)
           this.service.reservationTimes = null;
           this.service.chosenVehicle = null;
