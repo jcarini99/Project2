@@ -85,6 +85,8 @@
 
                     </form>
                     <table class="example-full-width" cellspacing="0">
+                        <div *ngIf="showError" class="error-message"><span>Please Pick valid dates</span></div>
+
                         <tr>
                             <td>
                                 <mat-form-field class="example-full-width" appearance="fill">
@@ -114,6 +116,7 @@
                         </tr>
                     </table>
                     <table class="example-full-width" cellspacing="0">
+                        <div *ngIf="showErrorCar" class="error-message"><span>Please choose a valid car</span></div>
                         <tr>
                             <td>
                                 <button [disabled]="!this.service.editing" class="changeCar" (click)="redirect()">Change Car</button>
