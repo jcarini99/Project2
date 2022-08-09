@@ -48,10 +48,12 @@ public class ReservationController {
     // Save operation
     @PostMapping
     public Reservation saveReservation(@Valid @RequestBody Reservation reservation) {
+    	System.out.println("reservation body" + reservation);
         if (reservationService.validateAvailReservation(reservation.getStart(), reservation.getEnd(),
                 reservation.getCar().getId()).isEmpty())
             return reservationService.saveReservation(reservation);
         else
+        	System.out.println("reservation body" + reservation);
             return null;
     }
     
