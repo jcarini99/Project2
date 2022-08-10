@@ -9,17 +9,11 @@ import { HttpClient } from '@angular/common/http';
 export class CarApiService {
 
   reservationTimes :any = null;
-  
   chosenVehicle :any = null;
-
   chosenReservation :any = {reservationId: null,
                             customerId: null};
-  tempDate :any = {}
-                          
-
+  tempDate :any = {}                     
   chosenCustomer :any                          
-
-
   reservation :any = null;
   http :HttpClient;
   pageSwitch: boolean = false;

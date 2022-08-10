@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.cars.models.Car;
 import com.cars.models.Reservation;
-
+ 
 @Repository
 public interface CarRepository extends JpaRepository<Car, Integer> {
 	//Select all cars whose reservations are null or whose start and end times do not fall between 
